@@ -6,7 +6,10 @@ local map = vim.keymap.set
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
 
-vim.keymap.set('i', '<C-c>', '<Esc>')
+map('i', '<C-c>', '<Esc>')
+
+-- disable tmuxss
+
 
 -- Close buffer
 map('n', '<A-c>', '<Cmd>BufferClose<CR>', { desc = 'Close the open buffer' })
