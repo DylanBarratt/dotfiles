@@ -1,0 +1,39 @@
+return {
+--   'sidebar-nvim/sidebar.nvim',
+--   config = function()
+--     local sidebar = require 'sidebar-nvim'
+--
+--     local width = 40
+--
+--     sidebar.setup {
+--       ['diagnostics'] = {
+--         icon = '',
+--       },
+--       todos = {
+--         icon = '',
+--         ignored_paths = { '~' },
+--         initially_closed = false,
+--       },
+--
+--       open = false,
+--       side = 'left',
+--       disable_default_keybindings = 1,
+--       initial_width = width,
+--       hide_statusline = true,
+--       update_interval = 1000,
+--       sections = { 'diagnostics', 'todos' },
+--       section_separator = { '', string.rep('⎯', width * 0.8), '' },
+--       section_title_separator = { '' },
+--     }
+--
+--     vim.api.nvim_create_augroup('SidebarAutogroup', { clear = true })
+--     vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
+--       group = 'SidebarAutogroup',
+--       callback = function()
+--         if vim.bo.filetype ~= 'alpha' and vim.bo.filetype ~= 'on' then
+--           vim.cmd 'SidebarNvimOpen'
+--         end
+--       end,
+--     })
+--   end,
+}

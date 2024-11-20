@@ -1,0 +1,19 @@
+[user]
+	name = Dylan Barratt
+	email = dylan.barratt@wjec.co.uk
+[pull]
+	rebase = false
+[alias]
+	conflicts = diff --name-only --diff-filter=U
+[core]
+	editor = nvim
+
+[merge]
+	tool = vimdiff
+  prompt = false
+	conflictstyle = diff3
+
+[mergetool "nvimdiff4"]
+  cmd = nvim -d $LOCAL $BASE $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[commit]
+	template = ~/.config/git/templates/.gitCommitTemplate
