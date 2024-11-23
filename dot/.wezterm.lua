@@ -4,6 +4,12 @@ local config = wezterm.config_builder()
 
 config.default_prog = { "tmux" }
 
+local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
+if is_windows then
+	config.default_domain = "WSL:Ubuntu"
+end
+config.default_cwd = wezterm.home_dir
+
 config.font = wezterm.font("IosevkaTermNerdFont", { weight = "Medium", italic = false })
 config.font_size = 14
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
