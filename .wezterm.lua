@@ -10,9 +10,15 @@ if is_windows then
 end
 config.default_cwd = wezterm.home_dir
 
-config.font = wezterm.font("IosevkaTermNerdFont", { weight = "Medium", italic = false })
-config.font_size = 14
-config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
+config.line_height = 1.2
+config.font = wezterm.font({
+	family = "IosevkaTermNerdFont",
+	weight = "Medium",
+	italic = false,
+	scale = 1,
+	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
+  size = 12
+})
 
 config.hide_tab_bar_if_only_one_tab = true
 
@@ -26,6 +32,11 @@ config.keys = {
 		key = "w",
 		mods = "CTRL",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
+	},
+	{
+		key = "n",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ToggleFullScreen,
 	},
 }
 

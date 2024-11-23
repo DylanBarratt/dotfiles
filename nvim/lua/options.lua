@@ -17,8 +17,8 @@ vim.opt.breakindent = true
 vim.opt.undofile = true
 
 -- enable case sensitive search
-vim.opt.ignorecase = false
-vim.opt.smartcase = false
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
@@ -55,4 +55,4 @@ vim.opt.expandtab = true
 vim.opt.filetype = 'on'
 vim.cmd('filetype plugin indent on')
 
-vim.o.linespace = 5
+vim.o.cmdheight=0

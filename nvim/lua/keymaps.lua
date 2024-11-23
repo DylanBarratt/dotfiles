@@ -10,7 +10,6 @@ map('i', '<C-c>', '<Esc>')
 
 -- disable tmuxss
 
-
 -- Close buffer
 map('n', '<A-c>', '<Cmd>BufferClose<CR>', { desc = 'Close the open buffer' })
 
@@ -87,8 +86,6 @@ map('n', 'gd', '<CMD>Glance definitions<CR>', { desc = '[g]o to [d]efinitions' }
 map('n', 'gR', '<CMD>Glance references<CR>', { desc = '[g]o to [r]eferences' })
 map('n', 'gt', '<CMD>Glance type_definitions<CR>', { desc = '[g]o to [t]ype_definitions' })
 map('n', 'gi', '<CMD>Glance implementations<CR>', { desc = '[g]o to [i]mplementations' })
-
-map('n', '<leader>sd', '<CMD>Telescope lsp_diagnostics<CR>', { desc = '[s]earch [d]iagnostics' })
 
 map('n', '<leader>r', function()
   return ':IncRename ' .. vim.fn.expand '<cword>'
