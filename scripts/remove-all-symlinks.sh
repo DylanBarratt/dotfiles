@@ -8,3 +8,4 @@ unlink ~/.config/git
 unlink ~/.tmux.conf
 unlink ~/.wezterm.lua
 unlink ~/.zshrc
+unlink ~/.p10k.zsh
