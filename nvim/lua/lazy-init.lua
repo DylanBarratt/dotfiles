@@ -15,4 +15,5 @@ require('lazy').setup {
   { import = 'plugins.ui' },
   { import = 'plugins.util' },
   { import = 'plugins.util.git' },
+  { import = 'plugins.local' },
 }
