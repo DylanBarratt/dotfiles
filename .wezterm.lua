@@ -17,8 +17,8 @@ config.font = wezterm.font({
 	italic = false,
 	scale = 1,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-  size = 12
 })
+config.font_size = 12
 
 config.hide_tab_bar_if_only_one_tab = true
 
