@@ -1,21 +1,16 @@
 #!/bin/sh 
 
-if [ -z "$1" ]
-then
-  echo "Please provide a branch name as the first arg"
-  return
-fi
-
-branchName=$1
 
 currentBranch=$(git symbolic-ref --short -q HEAD)
-if [ $currentBranch != "master" ] 
+if [ "$currentBranch" != "master" ]
 then
   echo "please be on master yo"
   return
 fi
 
-cleanFolderName=$(echo $branchName | sed -e 's/\//-/g')
-parentdir=$(dirname `pwd`)
+branchName=$(git for-each-ref --format='%(refname:short)' refs/heads/ | grep -v -E '^(master)' | gum choose --limit 1)
+
+cleanFolderName=$(echo "$branchName" | sed -e 's/\//-/g')
+parentdir=$(dirname "$(pwd)")
 git worktree remove "${parentdir}/${cleanFolderName}"
-git branch -D $branchName
+git branch -D "$branchName"

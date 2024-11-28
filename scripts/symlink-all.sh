@@ -1,6 +1,7 @@
-#!/bin/bash
+#! /usr/bin/bash
 
 # ln -sf /path/to/file /path/to/symlink
+# sed -i -e 's/\r$//
 
 # .config
 ln -sf ~/.dotfiles/nvim ~/.config/nvim

@@ -54,7 +54,3 @@ vim.opt.expandtab = true
 -- file type detection
 vim.opt.filetype = 'on'
 vim.cmd('filetype plugin indent on')
-
-vim.o.cmdheight=0
-
-vim.api.nvim_set_option("clipboard","unnamedplus")

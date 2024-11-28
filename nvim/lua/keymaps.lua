@@ -87,7 +87,7 @@ map('n', 'gR', '<CMD>Glance references<CR>', { desc = '[g]o to [r]eferences' })
 map('n', 'gt', '<CMD>Glance type_definitions<CR>', { desc = '[g]o to [t]ype_definitions' })
 map('n', 'gi', '<CMD>Glance implementations<CR>', { desc = '[g]o to [i]mplementations' })
 
-map('n', '<leader>r', function()
+map('n', '<leader>cr', function()
   return ':IncRename ' .. vim.fn.expand '<cword>'
 end, { expr = true, desc = '[r]ename' })
 
@@ -125,3 +125,9 @@ end, { desc = 'Toggle Watch' })
 
 -- alpha
 map('n', '<leader>a', '<CMD>Alpha<CR>', { desc = '[a]lpha' })
+
+-- rest client
+map('n', '<leader>rr', '<CMD>Rest env set .env<CR><CMD>Rest run<CR>', { desc = '[r]est [r]un' })
+map('n', '<leader>ro', '<CMD>Rest open<CR>', { desc = '[r]est [o]pen results' })
+map('n', '<leader>rl', '<CMD>Rest last<CR>', { desc = '[r]est [l]ast' })
+map('n', '<leader>re', '<CMD>Rest env show<CR>', { desc = '[r]est [e]nv show' })

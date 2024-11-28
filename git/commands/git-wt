@@ -1,31 +1,25 @@
 #!/bin/bash
 
-if [ -z "$1" ]
-then
-  echo "Please provide a branch name as the first arg"
-  exit 1
-fi
-
-newBranch=$1
-
 currentBranch=$(git symbolic-ref --short -q HEAD)
-if [ $currentBranch != "master" ] 
+if [ "$currentBranch" != "master" ] 
 then
   echo "please be on master yo"
   exit 1
 fi
 
 git pull
-branchExists=$(git ls-remote --head origin refs/heads/$newBranch | wc -l)
-if [ $branchExists = "0" ]
+newBranch=$(git for-each-ref --sort=-committerdate --count=10 refs/remotes/ --format='%(refname:short)' | grep -v -E '^(origin/HEAD|origin/master|origin/production)$' | sed 's|^origin/||' | head -n 7 | gum choose --limit 1)
+echo "Selected: $newBranch"
+branchExists=$(git ls-remote --head origin "$newBranch" | wc -l)
+if [ "$branchExists" == "0" ]
 then
   echo "branch doesn't exist on remote"
   exit 1
 fi
 
-cleanFolderName=$(echo $newBranch | sed -e 's/\//-/g')
-workTreeAddSuccess=$(git worktree add ../$cleanFolderName $newBranch)
-if [ $workTreeAddSuccess = "branch doesn't exist on remote" ]
+cleanFolderName=$(echo "$newBranch" | sed -e 's/\//-/g')
+workTreeAddSuccess=$(git worktree add "../$cleanFolderName" "$newBranch")
+if [ "$workTreeAddSuccess" == "branch doesn't exist on remote" ]
 then
   echo workTreeAddSuccess
   exit 1
@@ -39,10 +33,8 @@ else
   cp .env "../${cleanFolderName}"
 fi
 
-if [ ! -d node_modules]
+if [ -d .yarn ] || [ -d node_modules ]
 then
-  echo "node_modules doesn't exist"
-else
-  echo "copying node modules..."
-  cp -r node_modules "../${cleanFolderName}"
+  echo "installing yarn packages"
+  cd "../${cleanFolderName}" && yarn install || exit
 fi

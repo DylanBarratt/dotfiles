@@ -31,6 +31,7 @@ return {
           { '<leader>x', group = '[x] (trouble)', icon = '' },
           { '<leader>n', group = '[n]eotest', icon = '󰙨' },
           { '<leader>c', group = '[c]ode', icon = '󰒓' },
+          { '<leader>r', group = '[r]est client', icon = '' },
         },
       }
     end,

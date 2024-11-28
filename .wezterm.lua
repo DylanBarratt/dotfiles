@@ -13,7 +13,7 @@ config.default_cwd = wezterm.home_dir
 config.line_height = 1.2
 config.font = wezterm.font({
 	family = "IosevkaTermNerdFont",
-	weight = "Medium",
+	weight = "Regular",
 	italic = false,
 	scale = 1,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },

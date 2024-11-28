@@ -8,7 +8,7 @@ return {
       vim.cmd.hi 'Comment gui=none'
 
       require('catppuccin').setup {
-        flavour = 'auto', -- latte, frappe, macchiato, mocha
+        flavour = 'latte', -- latte, frappe, macchiato, mocha
         background = { -- :h background
           light = 'latte',
           dark = 'mocha',
@@ -45,9 +45,14 @@ return {
         integrations = {
           cmp = true,
           gitsigns = true,
-          nvimtree = true,
           treesitter = true,
-          notify = false,
+          neotest = true,
+          alpha = true,
+          mason = true,
+          telescope = true,
+          indent_blankline = true,
+          which_key = false,
+          native_lsp = true,
           mini = {
             enabled = true,
             indentscope_color = '',

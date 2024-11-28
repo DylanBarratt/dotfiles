@@ -30,12 +30,7 @@ return {
       },
     },
     status = { virtual_text = true },
-    output = { open_on_run = true },
-    quickfix = {
-      open = function()
-        require('trouble').open { mode = 'quickfix', focus = false }
-      end,
-    },
+    output = { open_on_run = false },
   },
   config = function(_, opts)
     local neotest_ns = vim.api.nvim_create_namespace 'neotest'
