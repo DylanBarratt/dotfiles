@@ -7,17 +7,10 @@ if is_windows then
 	config.default_domain = "WSL:Ubuntu"
 	config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
 else
-	config.font = wezterm.font({
-	family = "IosevkaTermNerdFont",
-	weight = "Regular",
-	italic = false,
-	scale = 1,
-	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
-})
+	config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
 end
 config.default_cwd = wezterm.home_dir
 
-config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
 config.font_size = 14
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 

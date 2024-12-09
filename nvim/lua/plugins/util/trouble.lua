@@ -1,6 +1,7 @@
 return {
   {
     'folke/trouble.nvim',
+    lazy=true,
     opts = {
       auto_close = false, -- auto close when there are no items
       auto_open = false, -- auto open when there are items
