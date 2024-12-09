@@ -2,25 +2,24 @@ local wezterm = require("wezterm")
 
 local config = wezterm.config_builder()
 
-config.default_prog = { "tmux" }
-
 local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
 if is_windows then
 	config.default_domain = "WSL:Ubuntu"
-end
-config.default_cwd = wezterm.home_dir
-
-config.line_height = 1.2
-config.font = wezterm.font({
+	config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
+else
+	config.font = wezterm.font({
 	family = "IosevkaTermNerdFont",
 	weight = "Regular",
 	italic = false,
 	scale = 1,
 	harfbuzz_features = { "calt=0", "clig=0", "liga=0" },
 })
-config.font_size = 12
+end
+config.default_cwd = wezterm.home_dir
 
-config.hide_tab_bar_if_only_one_tab = true
+config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
+config.font_size = 14
+config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 config.keys = {
 	{
@@ -33,21 +32,93 @@ config.keys = {
 		mods = "CTRL",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
-	{
-		key = "n",
-		mods = "SHIFT|CTRL",
-		action = wezterm.action.ToggleFullScreen,
+}
+
+-- TAB BAR
+config.use_fancy_tab_bar = false
+config.hide_tab_bar_if_only_one_tab = false
+config.tab_max_width = 64
+config.tab_bar_at_bottom = true
+config.colors = {
+	tab_bar = {
+		background = "#eff1f5",
+		active_tab = {
+			bg_color = "#eff1f5",
+			fg_color = "#4c4f69",
+
+			intensity = "Bold",
+		},
+		inactive_tab = {
+			bg_color = "#acb0be",
+			fg_color = "#4c4f69",
+
+			intensity = "Half",
+		},
+		new_tab = {
+			bg_color = "#eff1f5",
+			fg_color = "#eff1f5",
+		},
 	},
 }
 
-local function scheme_for_appearance(appearance)
-	if appearance:find("Dark") then
-		return "Catppuccin Mocha"
-	else
-		return "Catppuccin Latte"
-	end
+local process_icons = {
+	["git"] = wezterm.nerdfonts.dev_git,
+	["nvim"] = wezterm.nerdfonts.custom_vim,
+	["vim"] = wezterm.nerdfonts.dev_vim,
+	["yarn"] = "",
+}
+-- Return the Tab's current working directory
+local function get_cwd(tab)
+	return tab.active_pane.current_working_dir.file_path or ""
 end
-config.color_scheme = scheme_for_appearance(wezterm.gui.get_appearance())
+
+-- Remove all path components and return only the last value
+local function remove_abs_path(path)
+	return path:match("([^/]+/[^/]+)$")
+end
+
+-- Return the pretty path of the tab's current working directory
+local function get_display_cwd(tab)
+	local current_dir = get_cwd(tab)
+	local HOME_DIR = string.format("file://%s", os.getenv("HOME"))
+	return current_dir == HOME_DIR and "~/" or remove_abs_path(current_dir)
+end
+
+-- Pretty format the tab title
+local function format_title(tab)
+	local cwd = get_display_cwd(tab)
+
+	local active_title = tab.active_pane.title
+
+	local icon = process_icons[active_title]
+
+	return (icon == nil) and string.format(" %s ", cwd) or string.format(" %s  %s  ", icon, cwd)
+end
+
+-- Returns manually set title (from `tab:set_title()` or `wezterm cli set-tab-title`) or creates a new one
+local function get_tab_title(tab)
+	local title = tab.tab_title
+	if title and #title > 0 then
+		return title
+	end
+	return format_title(tab)
+end
+
+-- On format tab title events, override the default handling to return a custom title
+-- Docs: https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
+---@diagnostic disable-next-line: unused-local
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local title = get_tab_title(tab)
+
+	if tab.is_active then
+		return {
+			{ Text = title },
+		}
+	end
+	return title
+end)
+
+config.color_scheme = "Catppuccin Latte"
 
 config.window_padding = {
 	left = 0,
