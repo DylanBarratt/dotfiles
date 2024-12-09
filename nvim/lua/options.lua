@@ -54,3 +54,4 @@ vim.opt.expandtab = true
 -- file type detection
 vim.opt.filetype = 'on'
 vim.cmd('filetype plugin indent on')
+

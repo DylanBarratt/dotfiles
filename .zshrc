@@ -110,6 +110,8 @@ export NVM_DIR="$HOME/.nvm"
 #ocaml 
 eval $(opam env)
 
+export GPG_TTY=$(tty)
 # Still point to the symlink version
 export PATH=$PATH:$HOME/.config/git/commands
 export PATH="$PATH:/opt/nvim-linux64/bin"
+

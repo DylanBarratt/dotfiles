@@ -71,6 +71,8 @@ map('n', '[t', function()
   require('todo-comments').jump_prev()
 end, { desc = 'Previous todo comment' })
 
+map('n', '<Leader>st', '<Cmd>TodoTelescope keywords=TODO<CR>', { desc = 'Search [t]odos in CWD' })
+
 -- Remove wezterm tab
 map('n', '<C-t>', '')
 map('n', '<C-w>', '')
@@ -131,3 +133,13 @@ map('n', '<leader>rr', '<CMD>Rest env set .env<CR><CMD>Rest run<CR>', { desc = '
 map('n', '<leader>ro', '<CMD>Rest open<CR>', { desc = '[r]est [o]pen results' })
 map('n', '<leader>rl', '<CMD>Rest last<CR>', { desc = '[r]est [l]ast' })
 map('n', '<leader>re', '<CMD>Rest env show<CR>', { desc = '[r]est [e]nv show' })
+
+-- map('n', '<space>x', function()
+--   for _, client in ipairs(vim.lsp.get_clients()) do
+--     require('workspace-diagnostics').populate_workspace_diagnostics(client, 0)
+--   end
+--   vim.api.nvim_command 'Trouble globalErrors'
+-- end, {
+--   noremap = true,
+--   desc = '[x] show workspace diagnostics',
+-- })
