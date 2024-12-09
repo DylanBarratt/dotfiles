@@ -4,7 +4,7 @@
 # sed -i -e 's/\r$//
 
 # .config
-ln -sf ~/.dotfiles/nvim ~/.config/nvim
+ln -sf ~/.dotfiles/nvim ~/.config/
 ln -sf ~/.dotfiles/git ~/.config/git
 
 # .home

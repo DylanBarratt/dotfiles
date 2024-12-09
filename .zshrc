@@ -107,5 +107,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+#ocaml 
+eval $(opam env)
+
 # Still point to the symlink version
 export PATH=$PATH:$HOME/.config/git/commands
+export PATH="$PATH:/opt/nvim-linux64/bin"
