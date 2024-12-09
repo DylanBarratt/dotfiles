@@ -1,40 +1,42 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 currentBranch=$(git symbolic-ref --short -q HEAD)
-if [ "$currentBranch" != "master" ] 
-then
-  echo "please be on master yo"
+if [[ "$currentBranch" != "master" ]]; then
+  cd ../master
   exit 1
 fi
 
+echo "pulling latest..."
 git pull
-newBranch=$(git for-each-ref --sort=-committerdate --count=10 refs/remotes/ --format='%(refname:short)' | grep -v -E '^(origin/HEAD|origin/master|origin/production)$' | sed 's|^origin/||' | head -n 7 | gum choose --limit 1)
+if [ -z "$1" ]; then
+  # if no arguments then show the user a list of recent branches to pick from
+  newBranch=$(git for-each-ref --sort=-committerdate --count=25 refs/remotes/ --format='%(refname:short)' | grep -v -E '^(origin/HEAD|origin/master|origin/production)$' | sed 's|^origin/||' | head -n 20 | gum choose --limit 1)
+else
+  newBranch="$1"
+fi
+
 echo "Selected: $newBranch"
 branchExists=$(git ls-remote --head origin "$newBranch" | wc -l)
-if [ "$branchExists" == "0" ]
-then
+if [[ "$branchExists" == "0" ]]; then
   echo "branch doesn't exist on remote"
   exit 1
 fi
 
 cleanFolderName=$(echo "$newBranch" | sed -e 's/\//-/g')
 workTreeAddSuccess=$(git worktree add "../$cleanFolderName" "$newBranch")
-if [ "$workTreeAddSuccess" == "branch doesn't exist on remote" ]
-then
+if [[ "$workTreeAddSuccess" == "branch doesn't exist on remote" ]]; then
   echo workTreeAddSuccess
   exit 1
 fi
 
-if [ ! -f .env ]
-then
+if [ ! -f .env ]; then
   echo "env doesn't exist"
 else
   echo "copying env file..."
   cp .env "../${cleanFolderName}"
 fi
 
-if [ -d .yarn ] || [ -d node_modules ]
-then
+if [ -d .yarn ] || [ -d node_modules ]; then
   echo "installing yarn packages"
   cd "../${cleanFolderName}" && yarn install || exit
 fi

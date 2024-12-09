@@ -17,17 +17,6 @@ return {
 
       local H = {}
 
-      H.get_filesize = function()
-        local size = vim.fn.getfsize(vim.fn.getreg '%')
-        if size < 1024 then
-          return string.format('%dB', size)
-        elseif size < 1048576 then
-          return string.format('%.2fKiB', size / 1024)
-        else
-          return string.format('%.2fMiB', size / 1048576)
-        end
-      end
-
       H.ensure_get_icon = function()
         local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
         if not has_devicons then
@@ -51,7 +40,7 @@ return {
         -- Add filetype icon
         H.ensure_get_icon()
         if H.get_icon ~= nil then
-          filetype = filetype .. ' ' .. H.get_icon(filetype) .. ' '
+          filetype = H.get_icon()
         end
 
         -- Construct output string if truncated or buffer is not normal
@@ -59,17 +48,61 @@ return {
           return filetype
         end
 
-        local size = H.get_filesize()
-
-        return string.format('%s [%s]', filetype, size)
+        return string.format('%s ', filetype)
       end
 
       statusline.section_location = function()
         local currentLine = vim.fn.line '.'
         local total_lines = vim.fn.line '$'
         local percent = math.floor((currentLine / total_lines) * 100)
-        return tostring(percent) .. '%%'
+        return string.format('%s %sL', tostring(percent) .. '%%', total_lines)
       end
+
+      MiniStatusline.section_git = function(args)
+        if MiniStatusline.is_truncated(args.trunc_width) then
+          return ''
+        end
+
+        local summary = vim.b.gitsigns_head
+        if summary == nil then
+          return ''
+        end
+
+        return '' .. ' ' .. (summary == '' and '-' or summary)
+      end
+
+      MiniStatusline.section_diagnostics = function(args)
+        if MiniStatusline.is_truncated(args.trunc_width) or not vim.diagnostic.is_enabled { bufnr = 0 } then
+          return ''
+        end
+
+        local diagnostic_levels = {
+          { name = 'ERROR', sign = ' ' },
+          -- { name = 'WARN', sign = 'W' },
+          -- { name = 'INFO', sign = 'I' },
+          -- { name = 'HINT', sign = 'H' },
+        }
+        -- Construct string parts
+        local count = vim.diagnostic.count(0)
+        local severity, signs, t = vim.diagnostic.severity, args.signs or {}, {}
+        for _, level in ipairs(diagnostic_levels) do
+          local n = count[severity[level.name]] or 0
+          -- Add level info only if diagnostic is present
+          if n > 0 then
+            table.insert(t, level.sign .. n)
+          end
+        end
+        if #t == 0 then
+          return ''
+        end
+
+        return table.concat(t, '')
+      end
+
+      -- disable some
+      statusline.section_diff = function() end
+      -- statusline.section_lsp = function() end
+      statusline.section_filename = function() end
     end,
   },
 }

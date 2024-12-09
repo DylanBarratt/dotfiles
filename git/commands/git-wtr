@@ -1,5 +1,4 @@
-#!/bin/sh 
-
+#!/usr/bin/env bash
 
 currentBranch=$(git symbolic-ref --short -q HEAD)
 if [ "$currentBranch" != "master" ]
