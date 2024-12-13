@@ -14,6 +14,8 @@ config.default_cwd = wezterm.home_dir
 config.font_size = 14
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
+config.hide_mouse_cursor_when_typing = true
+
 config.keys = {
 	{
 		key = "t",
