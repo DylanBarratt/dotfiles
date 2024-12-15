@@ -113,7 +113,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	return title
 end)
 
-config.color_scheme = "Catppuccin Macchiato" -- Latte, Frappe, Macchiato, Mocha
+config.color_scheme = "Catppuccin Latte" -- Latte, Frappe, Macchiato, Mocha
 
 config.window_padding = {
 	left = 0,
