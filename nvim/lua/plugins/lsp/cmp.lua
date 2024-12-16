@@ -1,74 +1,45 @@
 return {
-  {
-    'hrsh7th/nvim-cmp',
-    event = 'BufEnter',
-    dependencies = {
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-nvim-lua',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
+  'saghen/blink.cmp',
+  lazy = false, -- lazy loading handled internally
+  dependencies = { 'rafamadriz/friendly-snippets' },
+
+  -- use a release tag to download pre-built binaries
+  version = 'v0.*',
+
+  ---@module 'blink.cmp'
+  ---@type blink.cmp.Config
+  ---@diagnostic disable: missing-fields
+  opts = {
+    keymap = {
+      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<C-e>'] = { 'hide' },
+      ['<C-y>'] = { 'select_and_accept' },
+
+      ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      ['<Tab>'] = { 'select_next', 'fallback' },
+
+      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+
+      ['<C-Up>'] = { 'snippet_forward', 'fallback' },
+      ['<C-Down>'] = { 'snippet_backward', 'fallback' },
     },
-    opts = function(_, opts)
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, {
-        name = 'lazydev',
-        group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-      })
-    end,
-    config = function()
-      local cmp = require 'cmp'
 
-      cmp.setup {
-        snippet = {
-          expand = function(args)
-            vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
-          end,
-        },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        mapping = cmp.mapping.preset.insert {
-          ['<Tab>'] = cmp.mapping(cmp.mapping.select_next_item(), { 'i', 's' }),
-          ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-f>'] = cmp.mapping.scroll_docs(4),
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-e>'] = cmp.mapping.abort(),
-          ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        },
-        sources = cmp.config.sources({
-          { name = 'nvim_lsp' },
-        }, {
-          { name = 'buffer' },
-        }),
-      }
+    completion = {
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 0,
+        update_delay_ms = 0,
+      },
+      -- Displays a preview of the selected item on the current line
+      ghost_text = {
+        enabled = false,
+      },
+    },
 
-      -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline({ '/', '?' }, {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = {
-          { name = 'buffer' },
-        },
-      })
-
-      -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' },
-        }, {
-          { name = 'cmdline' },
-        }),
-        matching = { disallow_symbol_nonprefix_matching = false },
-      })
-
-      -- Set up lspconfig.
-      -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      -- -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-      -- require('lspconfig')['<YOUR_LSP_SERVER>'].setup {
-      --   capabilities = capabilities,
-      -- }
-    end,
+    -- Experimental signature help support
+    signature = {
+      enabled = true,
+    },
   },
 }

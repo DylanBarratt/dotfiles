@@ -41,6 +41,7 @@ return {
         default_integrations = true,
         integrations = {
           cmp = true,
+          blink_cmp = true,
           gitsigns = true,
           treesitter = true,
           neotest = true,

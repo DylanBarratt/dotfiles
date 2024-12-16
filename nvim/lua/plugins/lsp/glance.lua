@@ -1,4 +1,4 @@
-return {
+return { -- better ui for lsp functions like references
   'dnlhc/glance.nvim',
   config = function()
     local glance = require 'glance'
@@ -75,7 +75,7 @@ return {
       winbar = {
         enable = true, -- Available strating from nvim-0.8+
       },
-      use_trouble_qf = false, -- Quickfix action will open trouble.nvim instead of built-in quickfix list window
+      use_trouble_qf = false,
     }
   end,
 }
