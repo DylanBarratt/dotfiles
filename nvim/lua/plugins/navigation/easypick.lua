@@ -1,6 +1,7 @@
 return {
   "axkirillov/easypick.nvim",
   requires = "nvim-telescope/telescope.nvim",
+  event = { "BufEnter" },
   config = function()
     local easypick = require("easypick")
     local get_default_branch = "git rev-parse --symbolic-full-name refs/remotes/origin/HEAD | sed 's!.*/!!'"
