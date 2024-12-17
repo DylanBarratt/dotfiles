@@ -1,13 +1,10 @@
 return {
   {
-    'brenoprata10/nvim-highlight-colors',
+    "brenoprata10/nvim-highlight-colors",
+    ft = { "html", "css", "javascriptreact", "typescriptreact" },
     opts = {},
-    config = function()
-      require('nvim-highlight-colors').setup({
-        render = 'virtual',
-        virtual_symbol_position = 'inline',
-      })
+    init = function()
       vim.opt.termguicolors = true
     end,
-  }
+  },
 }

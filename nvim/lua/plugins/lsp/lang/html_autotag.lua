@@ -1,8 +1,8 @@
 return {
-  'windwp/nvim-ts-autotag',
+  "windwp/nvim-ts-autotag",
   ft = {
-    'html',
-    'typescriptreact',
+    "html",
+    "typescriptreact",
   }, -- NOTE: add any other langs that use html tags here
   config = true,
 }

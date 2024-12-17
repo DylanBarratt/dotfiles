@@ -15,26 +15,25 @@
 
 return {
   { -- Useful plugin to show you pending keybinds.
-    'folke/which-key.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    event = 'VimEnter', -- Sets the loading event to 'VimEnter'
+    "folke/which-key.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "VimEnter", -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
-      require('which-key').setup()
+      require("which-key").setup()
 
       -- Document existing key chains
-      require('which-key').add {
+      require("which-key").add({
         {
-          mode = { 'n' },
-          { '<leader>s', group = '[s]earch', icon = '' },
-          { '<leader>t', group = '[t]oggle', icon = '󰔡' },
-          { '<leader>g', group = '[g]it', icon = '' },
+          mode = { "n" },
+          { "<leader>s", group = "[s]earch", icon = "" },
+          { "<leader>t", group = "[t]oggle", icon = "󰔡" },
+          { "<leader>g", group = "[g]it", icon = "" },
           -- { '<leader>x', group = '[x] (trouble)', icon = '' },
-          { '<leader>n', group = '[n]eotest', icon = '󰙨' },
-          { '<leader>c', group = '[c]ode', icon = '󰒓' },
-          { '<leader>r', group = '[r]est client', icon = '' },
+          { "<leader>n", group = "[n]eotest", icon = "󰙨" },
+          { "<leader>c", group = "[c]ode", icon = "󰒓" },
+          { "<leader>r", group = "[r]est client", icon = "" },
         },
-      }
+      })
     end,
   },
 }
--- vim: ts=2 sts=2 sw=2 et
