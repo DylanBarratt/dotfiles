@@ -61,6 +61,7 @@ return {
       -- setup must be called before loading
       vim.cmd.colorscheme("catppuccin")
 
+      -- https://catppuccin.com/palette
       -- for use in other plugins custom colours
       vim.g.latte_colours = require("catppuccin.palettes").get_palette("latte")
     end,
