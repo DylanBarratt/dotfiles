@@ -2,6 +2,7 @@ return { -- change colours for relative jump numbers
   "fluxdiv/relative-rainbow.nvim",
   event = { "VeryLazy" },
   config = function()
+    -- in a function to access the global latte_colours
     require("relative-rainbow").setup({
       {
         distance_from_cursor = 5,

@@ -4,5 +4,5 @@ return {
     "html",
     "typescriptreact",
   }, -- NOTE: add any other langs that use html tags here
-  config = true,
+  opts = {},
 }

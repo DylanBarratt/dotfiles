@@ -13,11 +13,13 @@ return { -- better ui for lsp functions like references
       -- and won't be restiricted by the width of your active window
       detached = true,
 
+      ---@diagnostic disable: missing-fields
       preview_win_opts = { -- Configure preview window options
         cursorline = true,
         number = true,
         wrap = true,
       },
+
       border = {
         enable = false, -- Show window borders. Only horizontal borders allowed
         top_char = "―",
