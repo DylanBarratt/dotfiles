@@ -5,6 +5,13 @@ return {
     init = function()
       vim.diagnostic.config({ virtual_text = false })
     end,
-    config = true,
+    opts = {
+      preset = "minimal",
+      options = {
+        show_source = true,
+        throttle = 0, -- increase if laggy
+        multiple_diag_under_cursor = true,
+      },
+    },
   },
 }
