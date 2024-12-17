@@ -6,6 +6,7 @@
 # .config
 ln -sf ~/.dotfiles/nvim ~/.config/
 ln -sf ~/.dotfiles/git ~/.config/git
+ln -sf ~/.dotfiles/television/ ~/.config/television
 
 # .home
 ln -sf ~/.dotfiles/.tmux.conf ~/.tmux.conf

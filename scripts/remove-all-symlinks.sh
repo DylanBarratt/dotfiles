@@ -3,11 +3,13 @@
 # .config
 unlink ~/.config/nvim
 unlink ~/.config/git
+unlink ~/.config/television
 
 # .home
 unlink ~/.tmux.conf
 unlink ~/.zshrc
 unlink ~/.p10k.zsh
+unlink ~/dict.txt
 
 if [ "$WSL_DISTRO_NAME" = "Ubuntu" ];
 then
