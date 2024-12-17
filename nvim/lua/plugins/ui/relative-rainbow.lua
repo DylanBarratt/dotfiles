@@ -1,5 +1,6 @@
 return { -- change colours for relative jump numbers
   "fluxdiv/relative-rainbow.nvim",
+  event = { "VeryLazy" },
   config = function()
     require("relative-rainbow").setup({
       {
