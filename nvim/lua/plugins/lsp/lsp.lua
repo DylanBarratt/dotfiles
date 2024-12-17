@@ -5,63 +5,54 @@ return {
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
   },
-  config = function()
-    require("mason").setup()
+  opts = {
+    servers = {
+      ocamllsp = {
+        codelens = { enable = true },
+      },
+      harper_ls = { -- spell check
+        ["harper-ls"] = {
+          userDictPath = "~/dict.txt",
+          fileDictPath = "~/.harper/",
+          linters = {
+            spell_check = true,
+            spelled_numbers = false,
+            an_a = true,
+            sentence_capitalization = false,
+            unclosed_quotes = true,
+            wrong_quotes = true,
+            long_sentences = true,
+            repeated_words = true,
+            spaces = true,
+            matcher = true,
+            correct_number_suffix = true,
+            number_suffix_capitalization = true,
+            multiple_sequential_pronouns = true,
+            linking_verbs = true,
+            avoid_curses = true,
+            terminating_conjunctions = true,
+          },
+        },
+      },
+    },
+  },
+  config = function(_, opts)
+    require("mason").setup({})
 
     require("mason-lspconfig").setup({
-      ensure_installed = {
-        "lua_ls",
-        "ts_ls",
-        "ocamllsp",
-        "harper_ls", -- spell check
-      },
-
+      -- install servers that have options
+      ensure_installed = vim.tbl_keys(opts.servers),
       automatic_installation = true,
     })
 
     require("mason-lspconfig").setup_handlers({
-      -- auto setup other servers with default options.
-      -- MUST BE FIRST?
+      -- auto setup other servers with options specified in opts or default options.
+      -- i hass ben setip corectly
       function(server_name)
-        require("lspconfig")[server_name].setup({})
-      end,
-
-      -- NOTE: am i doing this right?
-      ["harper_ls"] = function()
-        -- spel misteak
-        require("lspconfig")["harper_ls"].setup({
-          settings = {
-            ["harper-ls"] = {
-              userDictPath = "~/dict.txt",
-              fileDictPath = "~/.harper/",
-              linters = {
-                spell_check = true,
-                spelled_numbers = false,
-                an_a = true,
-                sentence_capitalization = false,
-                unclosed_quotes = true,
-                wrong_quotes = false,
-                long_sentences = true,
-                repeated_words = true,
-                spaces = true,
-                matcher = true,
-                correct_number_suffix = true,
-                number_suffix_capitalization = true,
-                multiple_sequential_pronouns = true,
-                linking_verbs = false,
-                avoid_curses = true,
-                terminating_conjunctions = true,
-              },
-            },
-          },
-        })
-      end,
-
-      ["ocamllsp"] = function()
-        require("lspconfig")["ocamllsp"].setup({
-          settings = {
-            codelens = { enable = true },
-          },
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
+        require("lspconfig")[server_name].setup({
+          settings = opts.servers[server_name],
+          capabilities = capabilities,
         })
       end,
     })
