@@ -11,6 +11,7 @@ return {
         typescript = { "prettier" },
         typescriptreact = { "prettier" },
         sh = { "shfmt" },
+        ocaml = { "ocamlformat" },
       },
       default_format_opts = {
         lsp_format = "fallback",
