@@ -1,4 +1,5 @@
 return { -- easy create telescope pickers
+  -- TODO: replace this plugin, probs unneeded and takes loads of time to load
   "axkirillov/easypick.nvim",
   requires = "nvim-telescope/telescope.nvim",
   event = { "BufEnter" },
