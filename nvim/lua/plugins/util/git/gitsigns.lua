@@ -1,5 +1,5 @@
 return {
-  { -- Adds git related signs to the gutter, as well as utilities for managing changes
+  { -- Adds git related signs to the gutter and allows buffer navigation for git hunks
     "lewis6991/gitsigns.nvim",
     opts = {
       signs = {

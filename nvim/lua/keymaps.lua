@@ -39,8 +39,8 @@ map("n", "<A-right>", "<Cmd>BufferMoveNext<CR>", { desc = "move current buffer t
 map("n", "<C-d>", "<C-d>zz", { desc = "Move down a page and center cursor" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Move up a page and center cursor" })
 
--- Search-replace
-map("n", "<leader>R", "<Cmd>SearchReplaceSingleBufferOpen<CR>", { desc = "Search and [R]eplace" })
+-- Search-replace (all the lefts to put the cursor in the correct position)
+map("n", "<leader>R", ":%s///gc<Left><Left><Left><Left>", { desc = "Search and [R]eplace" })
 
 -- Easy pickers
 map("n", "<Leader>sc", "<Cmd>Easypick changed_files<CR>", { desc = "Search git [c]hanged files" })

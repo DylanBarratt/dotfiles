@@ -78,6 +78,7 @@ return { -- better ui for lsp functions like references
         enable = true, -- Available strating from nvim-0.8+
       },
       use_trouble_qf = false,
+      preserve_win_context = true,
     })
   end,
 }
