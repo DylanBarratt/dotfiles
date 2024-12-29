@@ -1,4 +1,4 @@
-return {
+return { -- start dashboard
   "goolord/alpha-nvim",
   event = "VimEnter",
   dependencies = {

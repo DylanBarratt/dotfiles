@@ -1,4 +1,4 @@
-return {
+return { -- save sessions
   "Shatur/neovim-session-manager",
   config = function()
     local Path = require("plenary.path")

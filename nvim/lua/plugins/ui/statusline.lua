@@ -1,4 +1,4 @@
-return {
+return { -- statusline
   -- this is a heavily modified version, stealing lots of source from the original plugin
   "echasnovski/mini.statusline",
   version = "*",

@@ -1,4 +1,4 @@
-return {
+return { -- easy create telescope pickers
   "axkirillov/easypick.nvim",
   requires = "nvim-telescope/telescope.nvim",
   event = { "BufEnter" },

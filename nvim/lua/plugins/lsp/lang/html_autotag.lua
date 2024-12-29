@@ -1,4 +1,4 @@
-return {
+return { -- auto complete html tags
   "windwp/nvim-ts-autotag",
   ft = {
     "html",

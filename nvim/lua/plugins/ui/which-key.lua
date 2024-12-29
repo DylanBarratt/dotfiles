@@ -1,13 +1,10 @@
--- NOTE: Plugins can also be configured to run Lua code when they are loaded.
---
-return {
+return { -- keymap help ui
   "folke/which-key.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  event = "VimEnter", -- Sets the loading event to 'VimEnter'
-  config = function() -- This is the function that runs, AFTER loading
+  event = "VimEnter",
+  config = function()
     require("which-key").setup()
 
-    -- Document existing key chains
     require("which-key").add({
       {
         mode = { "n" },

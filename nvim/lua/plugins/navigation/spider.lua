@@ -1,5 +1,4 @@
-return {
-  {
+return { -- better word traversal
     "chrisgrieser/nvim-spider",
     lazy = true,
     keys = {
@@ -13,5 +12,4 @@ return {
       subwordMovement = true,
       customPatterns = {}, -- check "Custom Movement Patterns" in the README for details
     },
-  },
 }

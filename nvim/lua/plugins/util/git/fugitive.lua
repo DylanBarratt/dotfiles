@@ -1,2 +1,2 @@
 return { "tpope/vim-fugitive" }
--- the 🐐
+-- the git 🐐

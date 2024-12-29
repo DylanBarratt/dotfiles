@@ -10,9 +10,6 @@ vim.opt.hlsearch = true
 map({ "x", "v" }, "<C-c>", '"+y<Esc>')
 map("n", "<C-c>", '"+yy<Esc>')
 
--- Close buffer
-map("n", "<A-c>", "<Cmd>BufferClose<CR>", { desc = "Close the open buffer" })
-
 -- Clear any highlights
 map("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
@@ -29,11 +26,10 @@ map("n", "<up>", "<C-w><C-w>", { desc = "Move focus to next window" })
 -- File explorer
 map("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
--- Barbar shortcuts
-map("n", "<A-,>", "<Cmd>BufferPrevious<CR>", { desc = "Go to the [LEFT] buffer" })
-map("n", "<A-.>", "<Cmd>BufferNext<CR>", { desc = "Go to the [RIGHT] buffer" })
-map("n", "<A-left>", "<Cmd>BufferMovePrevious<CR>", { desc = "move current buffer to the left" })
-map("n", "<A-right>", "<Cmd>BufferMoveNext<CR>", { desc = "move current buffer to the right" })
+-- Open buffer manager
+map("n", "<Tab>", "<Cmd>lua require('buffer_manager.ui').toggle_quick_menu()<CR>")
+map("n", "<A-.>", "<CMD>lua require('buffer_manager.ui').nav_next()<CR>", { desc = "next buffer" })
+map("n", "<A-,>", "<CMD>lua require('buffer_manager.ui').nav_prev()<CR>", { desc = "previous buffer" })
 
 -- Page navigation
 map("n", "<C-d>", "<C-d>zz", { desc = "Move down a page and center cursor" })

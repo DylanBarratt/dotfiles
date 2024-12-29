@@ -1,4 +1,4 @@
-return {
+return { -- lsp server setup
   "neovim/nvim-lspconfig",
   dependencies = {
     "j-hui/fidget.nvim", -- lsp notifications

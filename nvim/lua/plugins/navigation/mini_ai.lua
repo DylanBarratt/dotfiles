@@ -1,6 +1,4 @@
-return {
-  -- Better Around/Inside textobjects
-  --
+return { -- Better Around/Inside textobjects
   -- Examples:
   --  - va)  - [V]isually select [A]round [)]paren
   --  - yinq - [Y]ank [I]nside [N]ext [']quote
