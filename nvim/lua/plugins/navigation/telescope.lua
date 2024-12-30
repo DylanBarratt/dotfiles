@@ -39,7 +39,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 
     require("telescope").setup({
       defaults = {
-        file_ignore_patterns = { "^./.git/", "^node_modules/" },
+        file_ignore_patterns = { ".git/", "^./.git/", "^node_modules/" },
         mappings = {
           i = {
             ["<CR>"] = telescope_custom_actions.multi_selection_open,
