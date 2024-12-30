@@ -99,8 +99,8 @@ return { -- statusline
         return "%t"
       end
 
-      -- relative path
-      return vim.fn.expand("%:.")
+      -- relative path (with save icon)
+      return (vim.bo.modified and "[+] " or "") .. vim.fn.expand("%:.")
     end
 
     statusline.section_fileinfo = function(args)
