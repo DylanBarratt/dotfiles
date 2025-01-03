@@ -54,3 +54,7 @@ vim.opt.expandtab = true
 -- file type detection
 vim.opt.filetype = "on"
 vim.cmd("filetype plugin indent on")
+
+
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
+vim.opt.hlsearch = true

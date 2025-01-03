@@ -13,7 +13,7 @@ return { -- completion
     keymap = {
       ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
       ["<C-e>"] = { "hide" },
-      ["<C-CR>"] = { "select_and_accept" },
+      ["<C-y>"] = { "select_and_accept" },
 
       ["<S-Tab>"] = { "select_prev", "fallback" },
       ["<Tab>"] = { "select_next", "fallback" },

@@ -4,7 +4,13 @@ return { -- buffer management menu
   opts = {
     order_buffers = "bufnr:reverse",
   },
-  config = function ()
+  config = function()
+    -- colour unsaved files
     vim.api.nvim_set_hl(0, "BufferManagerModified", { fg = vim.g.latte_colours["mauve"] })
-  end
+  end,
+  keys = {
+    { "<Tab>", "<Cmd>lua require('buffer_manager.ui').toggle_quick_menu()<CR>", "n" },
+    { "<A-.>", "<CMD>lua require('buffer_manager.ui').nav_next()<CR>", "n", { desc = "next buffer" } },
+    { "<A-,>", "<CMD>lua require('buffer_manager.ui').nav_prev()<CR>", "n", { desc = "previous buffer" } },
+  },
 }

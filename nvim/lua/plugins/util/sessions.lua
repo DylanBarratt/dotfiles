@@ -1,5 +1,8 @@
 return { -- save sessions
   "Shatur/neovim-session-manager",
+  keys = {
+    { "<leader>a", "<CMD>SessionManager load_current_dir_session<CR>", mode = "n", desc = "last session" },
+  },
   config = function()
     local Path = require("plenary.path")
     local config = require("session_manager.config")

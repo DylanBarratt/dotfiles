@@ -108,7 +108,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 #ocaml
-eval $(opam env)
+# eval $(opam env)
 
 export GPG_TTY=$(tty)
 # Still point to the symlink version

@@ -1,124 +1,34 @@
--- [[ Basic Keymaps ]]
---  See `:help map()`
-
-local map = vim.keymap.set
-
--- Set highlight on search, but clear on pressing <Esc> in normal mode
-vim.opt.hlsearch = true
-
 -- copy to system clipboard
-map({ "x", "v" }, "<C-c>", '"+y<Esc>')
-map("n", "<C-c>", '"+yy<Esc>')
+vim.keymap.set({ "x", "v" }, "<C-c>", '"+y<Esc>')
+vim.keymap.set("n", "<C-c>", '"+yy<Esc>')
 
 -- Clear any highlights
-map("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-map("n", "<up>", "<C-w><C-w>", { desc = "Move focus to next window" })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+vim.keymap.set("n", "<up>", "<C-w><C-w>", { desc = "Move focus to next window" })
 
--- File explorer
-map("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
-
--- Open buffer manager
-map("n", "<Tab>", "<Cmd>lua require('buffer_manager.ui').toggle_quick_menu()<CR>")
-map("n", "<A-.>", "<CMD>lua require('buffer_manager.ui').nav_next()<CR>", { desc = "next buffer" })
-map("n", "<A-,>", "<CMD>lua require('buffer_manager.ui').nav_prev()<CR>", { desc = "previous buffer" })
+-- Remove wezterm tab keymap
+vim.keymap.set("n", "<C-t>", "")
+vim.keymap.set("n", "<C-w>", "")
 
 -- Page navigation
-map("n", "<C-d>", "<C-d>zz", { desc = "Move down a page and center cursor" })
-map("n", "<C-u>", "<C-u>zz", { desc = "Move up a page and center cursor" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move down a page and center cursor" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move up a page and center cursor" })
 
 -- Search-replace (all the lefts to put the cursor in the correct position)
-map("n", "<leader>R", ":%s///gc<Left><Left><Left><Left>", { desc = "Search and [R]eplace" })
+vim.keymap.set("n", "<leader>R", ":%s///gc<Left><Left><Left><Left>", { desc = "Search and [R]eplace" })
 
--- Easy pickers
-map("n", "<Leader>sc", "<Cmd>Easypick changed_files<CR>", { desc = "Search git [c]hanged files" })
-map("n", "<Leader>p", "<Cmd>Easypick<CR>", { desc = "All [p]ickers" })
-
--- Precognition
-map("n", "<Leader>tp", "<Cmd>Precognition peek<CR>", { desc = "[t]oggle [p]recognition" })
-
--- Todo comments
-map("n", "]t", function()
-  require("todo-comments").jump_next()
-end, { desc = "Next todo comment" })
-
-map("n", "[t", function()
-  require("todo-comments").jump_prev()
-end, { desc = "Previous todo comment" })
-
-map("n", "<Leader>st", "<Cmd>TodoTelescope keywords=TODO<CR>", { desc = "Search [t]odos in CWD" })
-
--- Remove wezterm tab
-map("n", "<C-t>", "")
-map("n", "<C-w>", "")
-
-map("", "<leader>f", function()
-  require("conform").format({ async = true }, function(err)
-    if not err then
-      local mode = vim.api.nvim_get_mode().mode
-      if vim.startswith(string.lower(mode), "v") then
-        vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", true)
-      end
-    end
-  end)
-end, { desc = "[f]ormat code" })
-
--- lsp (related)
--- (glance)
-map("n", "gd", "<CMD>Glance definitions<CR>", { desc = "[g]o to [d]efinitions" })
-map("n", "gR", "<CMD>Glance references<CR>", { desc = "[g]o to [r]eferences" })
-map("n", "gt", "<CMD>Glance type_definitions<CR>", { desc = "[g]o to [t]ype_definitions" })
-map("n", "gi", "<CMD>Glance implementations<CR>", { desc = "[g]o to [i]mplementations" })
-
-map("n", "<leader>cr", function()
-  return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true, desc = "[r]ename" })
-
-map("n", "<leader>d", function()
+vim.keymap.set("n", "<leader>d", function()
   vim.lsp.buf.hover()
 end, { desc = "[d]ocs" })
-
-map("n", "<leader>ca", function()
+vim.keymap.set("n", "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, { desc = "[c]ode [a]ction " })
-
--- neotest
-map("n", "<leader>ns", "<CMD>Neotest summary<CR>", { desc = "[n]eotest [s]ummary" })
-map("n", "<leader>nf", function()
-  require("neotest").run.run(vim.fn.expand("%"))
-end, { desc = "Run File" })
-map("n", "<leader>na", function()
-  require("neotest").run.run(vim.uv.cwd())
-end, { desc = "Run All Test Files" })
-map("n", "<leader>nn", function()
-  require("neotest").run.run()
-end, { desc = "Run Nearest" })
-map("n", "<leader>nl", function()
-  require("neotest").run.run_last()
-end, { desc = "Run Last" })
-map("n", "<leader>no", function()
-  require("neotest").output_panel.toggle()
-end, { desc = "Toggle Output Panel" })
-map("n", "<leader>nS", function()
-  require("neotest").run.stop()
-end, { desc = "Stop" })
-map("n", "<leader>nw", function()
-  require("neotest").watch.toggle(vim.fn.expand("%"))
-end, { desc = "Toggle Watch" })
-
--- alpha
-map("n", "<leader>a", "<CMD>Alpha<CR>", { desc = "[a]lpha" })
-
--- rest client
-map("n", "<leader>rr", "<CMD>Rest env set .env<CR><CMD>Rest run<CR>", { desc = "[r]est [r]un" })
-map("n", "<leader>ro", "<CMD>Rest open<CR>", { desc = "[r]est [o]pen results" })
-map("n", "<leader>rl", "<CMD>Rest last<CR>", { desc = "[r]est [l]ast" })
-map("n", "<leader>re", "<CMD>Rest env show<CR>", { desc = "[r]est [e]nv show" })

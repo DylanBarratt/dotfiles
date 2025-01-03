@@ -14,4 +14,12 @@ return { -- manage files like a buffer
       max_height = 100,
     },
   },
+  keys = {
+    {
+      "-",
+      "<CMD>Oil --float<CR>",
+      mode = "n",
+      desc = "Open parent directory",
+    },
+  },
 }

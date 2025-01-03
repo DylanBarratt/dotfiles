@@ -7,9 +7,9 @@ return { -- lsp server setup
   },
   opts = {
     servers = {
-      ocamllsp = {
-        codelens = { enable = true },
-      },
+      -- ocamllsp = {
+      --   codelens = { enable = true },
+      -- },
       -- harper_ls = { -- spell check
       --   ["harper-ls"] = {
       --     userDictPath = "~/dict.txt",
