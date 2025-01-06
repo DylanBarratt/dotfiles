@@ -9,7 +9,7 @@ return { -- Highlight todo, notes, etc in comments
       function()
         require("todo-comments").jump_next()
       end,
-      "n",
+      mode = "n",
       desc = "Next todo comment",
     },
 
@@ -18,10 +18,10 @@ return { -- Highlight todo, notes, etc in comments
       function()
         require("todo-comments").jump_prev()
       end,
-      "n",
+      mode = "n",
       desc = "Previous todo comment",
     },
 
-    { "n", "<Leader>st", "<Cmd>TodoTelescope keywords=TODO<CR>", "n", desc = "Search [t]odos in CWD" },
+    { "<Leader>st", "<Cmd>TodoTelescope keywords=TODO<CR>", mode = "n", desc = "Search [t]odos in CWD" },
   },
 }

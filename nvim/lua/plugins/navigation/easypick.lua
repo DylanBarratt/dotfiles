@@ -4,8 +4,8 @@ return { -- easy create telescope pickers
   requires = "nvim-telescope/telescope.nvim",
   event = { "BufEnter" },
   keys = {
-    { "<Leader>sc", "<Cmd>Easypick changed_files<CR>", "n", desc = "Search git [c]hanged files" },
-    { "<Leader>p", "<Cmd>Easypick<CR>", "n", desc = "All [p]ickers" },
+    { "<Leader>sc", "<Cmd>Easypick changed_files<CR>", mode = "n", desc = "Search git [c]hanged files" },
+    { "<Leader>p", "<Cmd>Easypick<CR>", mode = "n", desc = "All [p]ickers" },
   },
   config = function()
     local easypick = require("easypick")

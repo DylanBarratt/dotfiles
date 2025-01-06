@@ -9,29 +9,63 @@ return { -- testings stuffs
     "nvim-neotest/neotest-jest",
   },
   keys = {
-
-{"<leader>ns", "<CMD>Neotest summary<CR>", "n", desc = "[n]eotest [s]ummary" },
-{"<leader>nf", function()
-  require("neotest").run.run(vim.fn.expand("%"))
-end,"n",  desc = "Run File" },
-{"<leader>na", function()
-  require("neotest").run.run(vim.uv.cwd())
-end,"n",  desc = "Run All Test Files" },
-{"<leader>nn", function()
-  require("neotest").run.run()
-end,"n",  desc = "Run Nearest" },
-{"<leader>nl", function()
-  require("neotest").run.run_last()
-end,"n",  desc = "Run Last" },
-{"<leader>no", function()
-  require("neotest").output_panel.toggle()
-end,"n",  desc = "Toggle Output Panel" },
-{"<leader>nS", function()
-  require("neotest").run.stop()
-end,"n",  desc = "Stop" },
-{"<leader>nw", function()
-  require("neotest").watch.toggle(vim.fn.expand("%"))
-end,"n",  desc = "Toggle Watch" },
+    { "<leader>ns", "<CMD>Neotest summary<CR>", mode = "n", desc = "[n]eotest [s]ummary" },
+    {
+      "<leader>nf",
+      function()
+        require("neotest").run.run(vim.fn.expand("%"))
+      end,
+      mode = "n",
+      desc = "Run File",
+    },
+    {
+      "<leader>na",
+      function()
+        require("neotest").run.run(vim.uv.cwd())
+      end,
+      mode = "n",
+      desc = "Run All Test Files",
+    },
+    {
+      "<leader>nn",
+      function()
+        require("neotest").run.run()
+      end,
+      mode = "n",
+      desc = "Run Nearest",
+    },
+    {
+      "<leader>nl",
+      function()
+        require("neotest").run.run_last()
+      end,
+      mode = "n",
+      desc = "Run Last",
+    },
+    {
+      "<leader>no",
+      function()
+        require("neotest").output_panel.toggle()
+      end,
+      mode = "n",
+      desc = "Toggle Output Panel",
+    },
+    {
+      "<leader>nS",
+      function()
+        require("neotest").run.stop()
+      end,
+      mode = "n",
+      desc = "Stop",
+    },
+    {
+      "<leader>nw",
+      function()
+        require("neotest").watch.toggle(vim.fn.expand("%"))
+      end,
+      mode = "n",
+      desc = "Toggle Watch",
+    },
   },
   opts = {
     adapters = {
