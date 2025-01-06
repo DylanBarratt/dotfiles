@@ -1,5 +1,7 @@
 # Stuffs to setup
 
+## Gum
+
 ## Neovim
 
 ## Zsh
