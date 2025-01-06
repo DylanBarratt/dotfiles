@@ -61,7 +61,12 @@ return { -- statusline
         return ""
       end
 
-      return "" .. " " .. (summary == "" and "-" or summary)
+      local jiraTicket = string.find(summary, "BLP-")
+      if  jiraTicket then
+        return " " .. string.sub(summary, jiraTicket, jiraTicket + 6)
+      end
+
+      return "" .. " " .. summary
     end
 
     statusline.section_diagnostics = function(args)
