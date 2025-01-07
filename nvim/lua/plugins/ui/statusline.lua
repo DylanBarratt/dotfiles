@@ -57,7 +57,7 @@ return { -- statusline
       end
 
       local summary = vim.b.gitsigns_head
-      if summary == nil then
+      if summary == nil or summary == "" then
         return ""
       end
 
