@@ -1,5 +1,6 @@
 return { -- save sessions
   "Shatur/neovim-session-manager",
+  lazy = false, -- so its available on launch
   keys = {
     { "<leader>a", "<CMD>SessionManager load_current_dir_session<CR>", mode = "n", desc = "last session" },
   },
