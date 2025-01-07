@@ -101,7 +101,7 @@ end
 
 -- On format tab title events, override the default handling to return a custom title
 -- Docs: https://wezfurlong.org/wezterm/config/lua/window-events/format-tab-title.html
----@diagnostic disable-next-line: unused-local
+---@diagnostic disable-next-line: unused-local, redefined-local
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local title = get_tab_title(tab)
 

@@ -33,6 +33,7 @@
   "oil.nvim": { "branch": "master", "commit": "c12fad2d225d8f81fadd48521d253607fe25465c" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "rest.nvim": { "branch": "main", "commit": "545509268d5e928d72d64764c21ef65c77e90edf" },
+  "telescope-frecency.nvim": { "branch": "master", "commit": "0c43bc7ea4bcd3941f14974a39f2d7f6058b55a5" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "dae2eac9d91464448b584c7949a31df8faefec56" },
   "telescope-ui-select.nvim": { "branch": "master", "commit": "6e51d7da30bd139a6950adf2a47fda6df9fa06d2" },
   "telescope-undo.nvim": { "branch": "main", "commit": "2971cc9f193ec09e0c5de3563f99cbea16b63f10" },
