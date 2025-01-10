@@ -6,7 +6,7 @@ return {
   keys = {
     { "gd", "<CMD>Glance definitions<CR>", mode = "n", desc = "" },
     {
-      "gr",
+      "gR",
       "<CMD>Glance references<CR>",
       mode = "n",
       desc = "",
