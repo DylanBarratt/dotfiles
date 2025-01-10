@@ -20,8 +20,8 @@ vim.keymap.set("n", "<C-t>", "")
 vim.keymap.set("n", "<C-w>", "")
 
 -- Page navigation
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move down a page and center cursor" })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move up a page and center cursor" })
+vim.keymap.set("n", "<C-d>", "10jzz", { desc = "Move down a page and center cursor" })
+vim.keymap.set("n", "<C-u>", "10kzz", { desc = "Move up a page and center cursor" })
 
 -- Search-replace (all the lefts to put the cursor in the correct position)
 vim.keymap.set("n", "<leader>R", ":%s///gc<Left><Left><Left><Left>", { desc = "Search and [R]eplace" })
