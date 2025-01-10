@@ -21,8 +21,13 @@ echo "Changes scope (optional):"
 SCOPE=$(gum input --placeholder "")
 test -n "$SCOPE" && SCOPE="($SCOPE)" # wrap SCOPE in parentheses if it has a value.
 
+echo "Breaking change?"
+BREAKING=$(gum choose "no" "yes")
+test "$BREAKING" = "yes" && BREAKING="!"
+test "$BREAKING" = "no" && BREAKING=""
+
 echo "Summary of the changes:"
-SUMMARY=$(gum input --value "$TYPE$SCOPE: ")
+SUMMARY=$(gum input --value "$TYPE$SCOPE$BREAKING: ")
 test -z "$SUMMARY" && echo "Exiting..." && exit 1
 
 echo "Body of the commit (optional):"
