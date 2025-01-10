@@ -35,11 +35,11 @@ DESCRIPTION=$(gum write --placeholder "")
 
 echo "Jira issue number:"
 ISSUE_NUM=$(gum input --value "$(git branch --show-current | grep -oE 'BLP-[0-9]+')")
-test -z "$ISSUE_NUM" && echo "Exiting..." && exit 1
+test -n "$ISSUE_NUM" && ISSUE_NUM="Jira-Issue: $ISSUE_NUM"
 
 gum style \
   --foreground 0 --border-foreground 0 --border thick \
   --align center --width 50 --margin "1 2" --padding "2 4" \
-  "$SUMMARY" "$DESCRIPTION" "Jira-Issue: $ISSUE_NUM"
+  "$SUMMARY" "$DESCRIPTION" "$ISSUE_NUM"
 
 git commit -m "$SUMMARY" -m "$DESCRIPTION" -m "Jira-Issue: $ISSUE_NUM"
