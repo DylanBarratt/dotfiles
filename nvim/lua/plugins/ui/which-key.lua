@@ -15,6 +15,7 @@ return { -- keymap help ui
         { "<leader>c", group = "[c]ode", icon = "󰒓" },
         { "<leader>r", group = "[r]est client", icon = "" },
         { "<leader>b", group = "rule[b]ook", icon = "" },
+        { "<leader>q", group = "[q]uickfix", icon = "󰁨" },
       },
     })
   end,
