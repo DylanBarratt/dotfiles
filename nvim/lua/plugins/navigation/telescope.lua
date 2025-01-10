@@ -43,8 +43,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
         mappings = {
           i = {
             ["<CR>"] = telescope_custom_actions.multi_selection_open,
-            ["+"] = actions.toggle_selection,
-            ["_"] = actions.select_all,
+            ["F2"] = actions.toggle_selection,
+            ["F3"] = actions.select_all,
             ["<S-Tab>"] = actions.move_selection_previous,
             ["<Tab>"] = actions.move_selection_next,
           },
@@ -78,19 +78,19 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[s]earch by [G]rep" })
     -- stylua: ignore end
 
-    vim.keymap.set("n", "<leader><leader>", function()
-      local cwd = vim.fn.getcwd()
-      require("telescope").extensions.frecency.frecency(
-        require("telescope.themes").get_ivy({
-          layout_config = {
-            preview_width = 0.5,
-          },
-          workspace = "CWD",
-          cwd = cwd,
-          prompt_title = "Frecency",
-          default_text = "",
-        })
-      )
-    end, { desc = "Find Files" })
+    -- vim.keymap.set("n", "<leader><leader>", function()
+    --   local cwd = vim.fn.getcwd()
+    --   require("telescope").extensions.frecency.frecency(
+    --     require("telescope.themes").get_ivy({
+    --       layout_config = {
+    --         preview_width = 0.5,
+    --       },
+    --       workspace = "CWD",
+    --       cwd = cwd,
+    --       prompt_title = "Frecency",
+    --       default_text = "",
+    --     })
+    --   )
+    -- end, { desc = "Find Files" })
   end,
 }
