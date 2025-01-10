@@ -53,6 +53,7 @@ return { -- Adds git related signs to the gutter and allows buffer navigation fo
       map("n", "<leader>gR", gitsigns.reset_buffer, { desc = "git [R]eset buffer" })
       map("n", "<leader>gp", gitsigns.preview_hunk, { desc = "git [p]review hunk" })
       map("n", "<leader>gb", gitsigns.blame_line, { desc = "git [b]lame line" })
+      map("n", "<leader>gB", gitsigns.blame, { desc = "git [b]lame file" })
       map("n", "<leader>gd", gitsigns.diffthis, { desc = "git [d]iff against index" })
       map("n", "<leader>gD", function()
         gitsigns.diffthis("@")
