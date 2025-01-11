@@ -36,6 +36,7 @@ DESCRIPTION=$(gum write --placeholder "")
 echo "Jira issue number:"
 ISSUE_NUM=$(gum input --value "$(git branch --show-current | grep -oE 'BLP-[0-9]+')")
 test -n "$ISSUE_NUM" && ISSUE_NUM="Jira-Issue: $ISSUE_NUM"
+test -z "$ISSUE_NUM" && ISSUE_NUM=""
 
 gum style \
   --foreground 0 --border-foreground 0 --border thick \
