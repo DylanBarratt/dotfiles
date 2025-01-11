@@ -43,4 +43,4 @@ gum style \
   --align center --width 50 --margin "1 2" --padding "2 4" \
   "$SUMMARY" "$DESCRIPTION" "$ISSUE_NUM"
 
-git commit -m "$SUMMARY" -m "$DESCRIPTION" -m "Jira-Issue: $ISSUE_NUM"
+git commit -m "$SUMMARY" -m "$DESCRIPTION" -m "$ISSUE_NUM"
