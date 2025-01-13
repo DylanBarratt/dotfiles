@@ -15,6 +15,9 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<up>", "<C-w><C-w>", { desc = "Move focus to next window" })
 
+--disable
+vim.keymap.set("n", "<down>", "", { remap=true })
+
 -- Remove wezterm tab keymap
 vim.keymap.set("n", "<C-t>", "")
 vim.keymap.set("n", "<C-w>", "")
