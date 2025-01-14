@@ -1,4 +1,0 @@
-lsp
-cmp
-lspconfig
-colour
