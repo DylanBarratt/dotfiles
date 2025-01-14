@@ -3,7 +3,6 @@ return { -- create and interact with rest requests
   dependencies = {
     "nvim-neotest/nvim-nio",
     "j-hui/fidget.nvim",
-    "nvim-telescope/telescope.nvim",
   },
   ft = "http",
   keys = {

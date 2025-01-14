@@ -43,7 +43,6 @@ return { -- theme theme theme cat theme
       neotest = true,
       alpha = true,
       mason = true,
-      telescope = true,
       indent_blankline = true,
       which_key = false,
       native_lsp = true,

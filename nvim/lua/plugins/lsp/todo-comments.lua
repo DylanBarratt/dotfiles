@@ -1,7 +1,7 @@
 return { -- Highlight todo, notes, etc in comments
   "folke/todo-comments.nvim",
   event = "VimEnter",
-  dependencies = { "nvim-lua/plenary.nvim" },
+  dependencies = { "nvim-lua/plenary.nvim", "ibhagwan/fzf-lua" },
   opts = { signs = false },
   keys = {
     {
@@ -22,6 +22,11 @@ return { -- Highlight todo, notes, etc in comments
       desc = "Previous todo comment",
     },
 
-    { "<Leader>st", "<Cmd>TodoTelescope keywords=TODO<CR>", mode = "n", desc = "Search [t]odos in CWD" },
+    {
+      "<Leader>st",
+      "<Cmd>TodoFzfLua keywords=TODO<CR>",
+      mode = "n",
+      desc = "Search [t]odos in CWD",
+    },
   },
 }
