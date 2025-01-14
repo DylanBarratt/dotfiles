@@ -4,14 +4,9 @@ return { -- code rename
   opts = {
     input_buffer_type = "dressing",
   },
-  keys = {
-    {
-      "<leader>cr",
-      function()
-        return ":IncRename " .. vim.fn.expand("<cword>")
-      end,
-      mode = "n",
-      desc = "[r]ename",
-    },
-  },
+  init = function()
+    vim.keymap.set("n", "<leader>cr", function()
+      return ":IncRename " .. vim.fn.expand("<cword>")
+    end, { desc = "[c]ode [r]ename", expr = true })
+  end,
 }
