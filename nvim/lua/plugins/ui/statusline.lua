@@ -134,7 +134,7 @@ return { -- statusline
       local currentLine = vim.fn.line(".")
       local total_lines = vim.fn.line("$")
       local percent = math.floor((currentLine / total_lines) * 100)
-      return string.format("%s %sL", tostring(percent) .. "%%", total_lines)
+      return string.format("%s", tostring(percent) .. "%%")
     end
 
     -- disable the rest
