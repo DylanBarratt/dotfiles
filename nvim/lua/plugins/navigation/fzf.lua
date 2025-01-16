@@ -52,6 +52,27 @@ return { -- faster search?
 
     vim.keymap.set(
       "n",
+      "<leader>sGs",
+      "<CMD>FzfLua git_status<CR>",
+      { desc = "[s]earch [G]it [s]tatus" }
+    )
+
+    vim.keymap.set(
+      "n",
+      "<leader>sGc",
+      "<CMD>FzfLua git_bcommits<CR>",
+      { desc = "[s]earch [G]it buffer [c]ommits" }
+    )
+
+    vim.keymap.set(
+      "n",
+      "<leader>sGC",
+      "<CMD>FzfLua git_commits<CR>",
+      { desc = "[s]earch [G]it [C]ommits" }
+    )
+
+    vim.keymap.set(
+      "n",
       "<leader>sw",
       "<CMD>FzfLua grep_cword<CR>",
       { desc = "[s]earch [w]ord" }
