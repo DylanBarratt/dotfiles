@@ -13,7 +13,9 @@ return { -- statusline
         return
       end
       H.get_icon = function()
-        return (devicons.get_icon(vim.fn.expand("%:t"), nil, { default = true }))
+        return (
+          devicons.get_icon(vim.fn.expand("%:t"), nil, { default = true })
+        )
       end
     end
 
@@ -22,21 +24,49 @@ return { -- statusline
     H.modes = setmetatable({
       ["n"] = { long = "Normal", short = "N", hl = "MiniStatuslineModeNormal" },
       ["v"] = { long = "Visual", short = "V", hl = "MiniStatuslineModeVisual" },
-      ["V"] = { long = "V-Line", short = "V-L", hl = "MiniStatuslineModeVisual" },
-      [CTRL_V] = { long = "V-Block", short = "V-B", hl = "MiniStatuslineModeVisual" },
+      ["V"] = {
+        long = "V-Line",
+        short = "V-L",
+        hl = "MiniStatuslineModeVisual",
+      },
+      [CTRL_V] = {
+        long = "V-Block",
+        short = "V-B",
+        hl = "MiniStatuslineModeVisual",
+      },
       ["s"] = { long = "Select", short = "S", hl = "MiniStatuslineModeVisual" },
-      ["S"] = { long = "S-Line", short = "S-L", hl = "MiniStatuslineModeVisual" },
-      [CTRL_S] = { long = "S-Block", short = "S-B", hl = "MiniStatuslineModeVisual" },
+      ["S"] = {
+        long = "S-Line",
+        short = "S-L",
+        hl = "MiniStatuslineModeVisual",
+      },
+      [CTRL_S] = {
+        long = "S-Block",
+        short = "S-B",
+        hl = "MiniStatuslineModeVisual",
+      },
       ["i"] = { long = "Insert", short = "I", hl = "MiniStatuslineModeInsert" },
-      ["R"] = { long = "Replace", short = "R", hl = "MiniStatuslineModeReplace" },
-      ["c"] = { long = "Command", short = "C", hl = "MiniStatuslineModeCommand" },
+      ["R"] = {
+        long = "Replace",
+        short = "R",
+        hl = "MiniStatuslineModeReplace",
+      },
+      ["c"] = {
+        long = "Command",
+        short = "C",
+        hl = "MiniStatuslineModeCommand",
+      },
       ["r"] = { long = "Prompt", short = "P", hl = "MiniStatuslineModeOther" },
       ["!"] = { long = "Shell", short = "Sh", hl = "MiniStatuslineModeOther" },
       ["t"] = { long = "Terminal", short = "T", hl = "MiniStatuslineModeOther" },
     }, {
       -- By default return 'Unknown' but this shouldn't be needed
       __index = function()
-        return { long = "Unknown", short = "U", hl = "%#MiniStatuslineModeOther#" }
+        return {
+          long = "Unknown",
+          short = "U",
+          hl = "%#MiniStatuslineModeOther#",
+        }
       end,
     })
 
@@ -62,7 +92,7 @@ return { -- statusline
       end
 
       local jiraTicket = string.find(summary, "BLP-")
-      if  jiraTicket then
+      if jiraTicket then
         return " " .. string.sub(summary, jiraTicket, jiraTicket + 6)
       end
 
@@ -70,7 +100,10 @@ return { -- statusline
     end
 
     statusline.section_diagnostics = function(args)
-      if statusline.is_truncated(args.trunc_width) or not vim.diagnostic.is_enabled({ bufnr = 0 }) then
+      if
+        statusline.is_truncated(args.trunc_width)
+        or not vim.diagnostic.is_enabled({ bufnr = 0 })
+      then
         return ""
       end
 
