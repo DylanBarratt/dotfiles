@@ -1,39 +1,31 @@
 return { -- lsp server setup
   "neovim/nvim-lspconfig",
   dependencies = {
+    {
+      "nvim-java/nvim-java",
+      opts = {},
+    },
     "j-hui/fidget.nvim", -- lsp notifications
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
   },
   opts = {
     servers = {
-      -- ocamllsp = {
-      --   codelens = { enable = true },
-      -- },
-      -- harper_ls = { -- spell check
-      --   ["harper-ls"] = {
-      --     userDictPath = "~/dict.txt",
-      --     fileDictPath = "~/.harper/",
-      --     linters = {
-      --       spell_check = true,
-      --       spelled_numbers = false,
-      --       an_a = true,
-      --       sentence_capitalization = false,
-      --       unclosed_quotes = true,
-      --       wrong_quotes = false,
-      --       long_sentences = true,
-      --       repeated_words = true,
-      --       spaces = true,
-      --       matcher = true,
-      --       correct_number_suffix = true,
-      --       number_suffix_capitalization = true,
-      --       multiple_sequential_pronouns = true,
-      --       linking_verbs = true,
-      --       avoid_curses = true,
-      --       terminating_conjunctions = true,
-      --     },
-      --   },
-      -- },
+      jdtls = {
+        settings = {
+          java = {
+            configuration = {
+              runtimes = {
+                {
+                  name = "JavaSE-21",
+                  path = "/usr/lib/jvm/java-21-openjdk-amd64",
+                  default = true,
+                },
+              },
+            },
+          },
+        },
+      },
     },
   },
   config = function(_, opts)
