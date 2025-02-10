@@ -58,9 +58,10 @@ config.colors = {
 
 local process_icons = {
 	["git"] = wezterm.nerdfonts.dev_git,
-	["nvim"] = wezterm.nerdfonts.custom_vim,
+	["nvim"] = "",
 	["vim"] = wezterm.nerdfonts.dev_vim,
 	["yarn"] = "",
+	["./gradlew"] = "",
 }
 -- Return the Tab's current working directory
 local function get_cwd(tab)
