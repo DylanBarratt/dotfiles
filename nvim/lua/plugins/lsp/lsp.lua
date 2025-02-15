@@ -1,32 +1,12 @@
 return { -- lsp server setup
   "neovim/nvim-lspconfig",
   dependencies = {
-    {
-      "nvim-java/nvim-java",
-      opts = {},
-    },
     "j-hui/fidget.nvim", -- lsp notifications
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
   },
   opts = {
-    servers = {
-      jdtls = {
-        settings = {
-          java = {
-            configuration = {
-              runtimes = {
-                {
-                  name = "JavaSE-21",
-                  path = "/usr/lib/jvm/java-21-openjdk-amd64",
-                  default = true,
-                },
-              },
-            },
-          },
-        },
-      },
-    },
+    servers = {},
   },
   config = function(_, opts)
     require("mason").setup({})
