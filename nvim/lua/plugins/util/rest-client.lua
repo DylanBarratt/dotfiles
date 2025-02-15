@@ -27,15 +27,14 @@ return { -- create and interact with rest requests
     },
   },
   config = function()
-    vim.g.rest_nvim = {
-      result = {
-        format = true,
-        behavior = {
-          formatters = {
-            json = "jq",
-          },
-        },
-      },
-    }
+    -- format response with jq
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "json",
+      callback = function(ev)
+        vim.bo[ev.buf].formatprg = "jq"
+      end,
+    })
+
+    vim.g.rest_nvim = {}
   end,
 }

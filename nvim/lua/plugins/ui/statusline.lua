@@ -137,8 +137,16 @@ return { -- statusline
         return "%t"
       end
 
+      local fileBreadcrumb = ""
+      for word in string.gmatch(vim.fn.expand("%:."), "([^/]+)") do
+        fileBreadcrumb = fileBreadcrumb .. word .. " > "
+      end
+
+      -- minus the last " > "
+      fileBreadcrumb = string.sub(fileBreadcrumb, 0, -4)
+
       -- relative path (with save icon)
-      return (vim.bo.modified and "[+] " or "") .. vim.fn.expand("%:.")
+      return (vim.bo.modified and "[+] " or "") .. fileBreadcrumb
     end
 
     statusline.section_fileinfo = function(args)
