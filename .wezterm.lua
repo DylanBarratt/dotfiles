@@ -61,7 +61,7 @@ local process_icons = {
 	["nvim"] = "",
 	["vim"] = wezterm.nerdfonts.dev_vim,
 	["yarn"] = "",
-	["./gradlew"] = "",
+	["sam"] = ""
 }
 -- Return the Tab's current working directory
 local function get_cwd(tab)
@@ -88,7 +88,7 @@ local function format_title(tab)
 
 	local icon = process_icons[active_title]
 
-	return (icon == nil) and string.format(" %s ", cwd) or string.format(" %s  %s  ", icon, cwd)
+	return (icon == nil) and string.format("%s", cwd) or string.format(" %s  %s ", icon, cwd)
 end
 
 -- Returns manually set title (from `tab:set_title()` or `wezterm cli set-tab-title`) or creates a new one
@@ -114,7 +114,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	return title
 end)
 
-config.color_scheme = "Catppuccin Latte" -- Latte, Frappe, Macchiato, Mocha
+config.color_scheme = "Catppuccin Latte"
 
 config.window_padding = {
 	left = 0,

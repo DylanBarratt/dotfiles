@@ -66,6 +66,7 @@ plugins=(
   zsh-syntax-highlighting 
   zsh-vi-mode
   yarn
+  aws
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -116,3 +117,8 @@ export PATH=$PATH:$HOME/.config/git/commands
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:/usr/local/go/bin"
 
+# when using local dynamodb
+# export AWS_ENDPOINT_URL=http://localhost:8000
+
+# for bb git login
+eval $(ssh-agent)
