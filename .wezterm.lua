@@ -7,11 +7,12 @@ if is_windows then
 	config.default_domain = "WSL:Ubuntu"
 	config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
 else
-	config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
+	config.font = wezterm.font("Iosevka Nerd Font Mono", {weight="Regular", stretch="Normal", style="Normal"})
+	-- config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
 end
 config.default_cwd = wezterm.home_dir
 
-config.font_size = 14
+config.font_size = 20
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 config.hide_mouse_cursor_when_typing = true
@@ -68,16 +69,11 @@ local function get_cwd(tab)
 	return tab.active_pane.current_working_dir.file_path or ""
 end
 
--- Remove all path components and return only the last value
-local function remove_abs_path(path)
-	return path:match("([^/]+/[^/]+)$")
-end
-
 -- Return the pretty path of the tab's current working directory
 local function get_display_cwd(tab)
 	local current_dir = get_cwd(tab)
 	local HOME_DIR = string.format("file://%s", os.getenv("HOME"))
-	return current_dir == HOME_DIR and "~/" or remove_abs_path(current_dir)
+	return current_dir == HOME_DIR and "~/" or current_dir
 end
 
 -- Pretty format the tab title
