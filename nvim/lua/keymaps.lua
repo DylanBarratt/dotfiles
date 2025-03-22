@@ -16,7 +16,7 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "<up>", "<C-w><C-w>", { desc = "Move focus to next window" })
 
 --disable
-vim.keymap.set("n", "<down>", "", { remap=true })
+vim.keymap.set("n", "<down>", "", { remap = true })
 
 -- Remove wezterm tab keymap
 vim.keymap.set("n", "<C-t>", "")
@@ -32,6 +32,11 @@ vim.keymap.set("n", "<leader>R", ":%s///gc<Left><Left><Left><Left>", { desc = "S
 vim.keymap.set("n", "<leader>d", function()
   vim.lsp.buf.hover()
 end, { desc = "[d]ocs" })
-vim.keymap.set("n", "<leader>ca", function()
-  vim.lsp.buf.code_action()
-end, { desc = "[c]ode [a]ction " })
+-- vim.keymap.set("n", "<leader>ca", function()
+--   vim.lsp.buf.code_action()
+-- end, { desc = "[c]ode [a]ction " })
+vim.keymap.set("n", "<leader>ca", "<cmd>FzfLua lsp_code_actions <cr>", { desc = "[c]ode [a]ction " })
+
+
+-- lsp
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { silent = true, noremap = true, desc = "Go to implementation" })

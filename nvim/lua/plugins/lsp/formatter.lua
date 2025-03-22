@@ -11,6 +11,7 @@ return { -- code formatting
       sh = { "shfmt" },
       ocaml = { "ocamlformat" },
       xml = { "xmlformatter" },
+      java = { "google-java-format" },
     },
     default_format_opts = {
       lsp_format = "fallback",

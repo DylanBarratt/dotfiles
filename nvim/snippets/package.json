@@ -1,0 +1,9 @@
+{
+  "name": "personal-snippets",
+  "contributes": {
+    "snippets": [
+      { "language": "java", "path": "./java-tests.json" },
+      { "language": "java", "path": "./javadoc.json" }
+    ]
+  }
+}

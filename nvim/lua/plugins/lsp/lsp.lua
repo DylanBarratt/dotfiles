@@ -6,7 +6,9 @@ return { -- lsp server setup
     "williamboman/mason-lspconfig.nvim",
   },
   opts = {
-    servers = {
+    servers = {},
+    disabled = {
+      "jdtls",
     },
   },
   config = function(_, opts)
@@ -21,10 +23,13 @@ return { -- lsp server setup
     require("mason-lspconfig").setup_handlers({
       -- auto setup other servers with options specified in opts or default options.
       function(server_name)
-        local capabilities = require("blink.cmp").get_lsp_capabilities()
+        if vim.tbl_contains(opts.disabled, server_name) then
+          return
+        end
+
         require("lspconfig")[server_name].setup({
           settings = opts.servers[server_name],
-          capabilities = capabilities,
+          capabilities = require("blink.cmp").get_lsp_capabilities(),
         })
       end,
     })

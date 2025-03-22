@@ -24,14 +24,51 @@ return { -- faster search?
       pointer = "#a6d189",
       header = "#a6adc8",
     },
+    files = {
+      formatter = "path.filename_first",
+    },
   },
   event = "VimEnter",
   config = function(_, opts)
-    require("fzf-lua").setup(opts)
+    local fzf_lua = require("fzf-lua")
+    fzf_lua.setup(opts)
+
+    local function get_most_common_extension()
+      local handle = io.popen(
+        "rg --files | awk -F. 'NF>1{print $NF}' | sort | uniq -c | sort -nr | head -n1"
+      )
+      if not handle then
+        return nil
+      end
+      local result = handle:read("*l")
+      handle:close()
+
+      if result then
+        local count, ext = result:match("(%d+)%s+(%S+)")
+        return ext
+      end
+      return nil
+    end
+
+    local function fzf_files_filtered()
+      local ext = get_most_common_extension()
+      if ext then
+        fzf_lua.files({ cmd = "rg --files -g '*." .. ext .. "'" })
+      else
+        fzf_lua.files()
+      end
+    end
 
     vim.keymap.set(
       "n",
       "<leader><leader>",
+      fzf_files_filtered,
+      { desc = "find common files" }
+    )
+
+    vim.keymap.set(
+      "n",
+      "<leader>sf",
       "<CMD>FzfLua files<CR>",
       { desc = "find files" }
     )

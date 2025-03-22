@@ -25,6 +25,10 @@ return { -- completion
       ["<C-Down>"] = { "snippet_backward", "fallback" },
     },
 
+    sources = {
+      default = { "lsp", "snippets", "path", "buffer" },
+    },
+
     completion = {
       documentation = {
         auto_show = true,
