@@ -4,7 +4,7 @@ return { -- completion
   dependencies = { "rafamadriz/friendly-snippets" },
 
   -- use a release tag to download pre-built binaries
-  version = "v0.*",
+  version = "v1.*",
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -29,17 +29,13 @@ return { -- completion
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 0,
-        update_delay_ms = 0,
-      },
-      -- Displays a preview of the selected item on the current line
-      ghost_text = {
-        enabled = false,
+        update_delay_ms = 50,
       },
     },
 
     -- Experimental signature help support
-    signature = {
-      enabled = true,
-    },
+    signature = { enabled = true },
+
+    cmdline = { completion = { menu = { auto_show = true } } },
   },
 }

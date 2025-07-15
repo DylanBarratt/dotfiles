@@ -11,6 +11,8 @@ return { -- code formatting
       sh = { "shfmt" },
       ocaml = { "ocamlformat" },
       xml = { "xmlformatter" },
+      markdown = { "mdformat" },
+      cucumber = { "reformat-gherkin" },
     },
     default_format_opts = {
       lsp_format = "fallback",

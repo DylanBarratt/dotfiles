@@ -34,7 +34,5 @@ return { -- create and interact with rest requests
         vim.bo[ev.buf].formatprg = "jq"
       end,
     })
-
-    vim.g.rest_nvim = {}
   end,
 }

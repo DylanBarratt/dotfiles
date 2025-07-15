@@ -27,14 +27,12 @@ return { -- faster search?
   },
   event = "VimEnter",
   config = function(_, opts)
-    require("fzf-lua").setup(opts)
+    local fzf = require("fzf-lua")
+    fzf.setup(opts)
 
-    vim.keymap.set(
-      "n",
-      "<leader><leader>",
-      "<CMD>FzfLua files<CR>",
-      { desc = "find files" }
-    )
+    vim.keymap.set("n", "<leader><leader>", function()
+      fzf.files({ cmd = "fdfind --type file --hidden --exclude '.yarn' --exclude '.git' --exclude '.aws-sam' --ignore" })
+    end, { desc = "find files" })
 
     vim.keymap.set(
       "n",

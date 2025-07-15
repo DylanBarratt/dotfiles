@@ -121,4 +121,4 @@ export PATH="$PATH:/usr/local/go/bin"
 # export AWS_ENDPOINT_URL=http://localhost:8000
 
 # for bb git login
-eval $(ssh-agent)
+# eval $(ssh-agent)

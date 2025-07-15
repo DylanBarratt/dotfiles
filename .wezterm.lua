@@ -16,7 +16,7 @@ config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
 
 config.hide_mouse_cursor_when_typing = true
 
-config.keys = {
+local keys = {
 	{
 		key = "t",
 		mods = "CTRL",
@@ -28,6 +28,17 @@ config.keys = {
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
 }
+
+for i = 1, 8 do
+	-- CTRL+ALT + number to activate that tab
+	table.insert(keys, {
+		key = tostring(i),
+		mods = "CTRL",
+		action = wezterm.action.ActivateTab(i - 1),
+	})
+end
+
+config.keys = keys
 
 -- TAB BAR
 config.use_fancy_tab_bar = false
@@ -61,7 +72,7 @@ local process_icons = {
 	["nvim"] = "",
 	["vim"] = wezterm.nerdfonts.dev_vim,
 	["yarn"] = "",
-	["sam"] = ""
+	["sam"] = "",
 }
 -- Return the Tab's current working directory
 local function get_cwd(tab)

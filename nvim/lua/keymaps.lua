@@ -35,3 +35,8 @@ end, { desc = "[d]ocs" })
 vim.keymap.set("n", "<leader>ca", function()
   vim.lsp.buf.code_action()
 end, { desc = "[c]ode [a]ction " })
+
+-- write current filename
+vim.keymap.set("n", "<leader>F", function ()
+  vim.api.nvim_put({ vim.fn.expand("%:t") }, "c", true, true)
+end, { desc = "[F]ilename" })
