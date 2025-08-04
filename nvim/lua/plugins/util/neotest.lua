@@ -11,14 +11,14 @@ return { -- testings stuffs
   },
   opts = {
     adapters = {
-      -- ["neotest-jest"] = {
-      --   jestCommand = "npm test --",
-      --   jestConfigFile = "jest.config.ts",
-      --   env = { CI = true },
-      --   cwd = function()
-      --     return vim.fn.getcwd()
-      --   end,
-      -- },
+      ["neotest-jest"] = {
+        jestCommand = "npm test --",
+        jestConfigFile = "jest.config.ts",
+        env = { CI = true },
+        cwd = function()
+          return vim.fn.getcwd()
+        end,
+      },
       ["neotest-vitest"] = {
         filter_dir = function(name)
           return name ~= "node_modules"

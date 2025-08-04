@@ -45,8 +45,8 @@ return { -- linting
       parser = require("lint.linters.eslint_d").parser,
     }
 
-    -- lint.linters_by_ft = { typescriptreact = { "eslint_d" } }
-    lint.linters_by_ft = { typescriptreact = { "eslint_yarn" } }
+    lint.linters_by_ft = { typescriptreact = { "eslint_d" } }
+    -- lint.linters_by_ft = { typescriptreact = { "eslint_yarn" } }
 
     vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost" }, {
       group = vim.api.nvim_create_augroup("Lint", { clear = true }),
