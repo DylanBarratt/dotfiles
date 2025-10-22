@@ -1,7 +1,10 @@
 # Stuffs to setup
 
 ## Gum
-``` sh
+
+Needed for git scripts
+
+```sh
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://repo.charm.sh/apt/gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/charm.gpg
 echo "deb [signed-by=/etc/apt/keyrings/charm.gpg] https://repo.charm.sh/apt/ * *" | sudo tee /etc/apt/sources.list.d/charm.list
@@ -10,10 +13,11 @@ sudo apt update && sudo apt install gum
 
 ## Neovim
 
-## Zsh
+https://neovim.io
 
-## lua 5.1
-``` sh
+### lua 5.1
+
+```sh
 # dependencies
 sudo apt-get install libreadline-dev 
 
@@ -25,8 +29,10 @@ make all test
 sudo make all install
 ```
 
-## luarocks
+### luarocks
+
 *needs lua*
+
 ```sh
 wget https://luarocks.org/releases/luarocks-3.11.1.tar.gz
 tar zxpf luarocks-3.11.1.tar.gz
@@ -36,9 +42,14 @@ sudo luarocks install luasocket
 lua
 ```
 
-## television
-``` sh
-curl -LO https://github.com/alexpasmantier/television/releases/download/0.7.0/television_0.7.0-1_amd64.deb
-sudo dpkg -i television_0.7.0-1_amd64.deb
+### eslint
+
+```sh
+npm install -G eslint typescript-eslint
 ```
 
+## Zsh
+
+https://ohmyz.sh
+
+Theme: https://github.com/romkatv/powerlevel10k
