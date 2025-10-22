@@ -91,12 +91,14 @@ return { -- statusline
         return ""
       end
 
-      local jiraTicket = string.find(summary, "BLP-")
-      if jiraTicket then
-        return " " .. string.sub(summary, jiraTicket, jiraTicket + 6)
-      end
+      local truncSummary = string.sub(vim.b.gitsigns_head, 1, 20)
 
-      return "" .. " " .. summary
+      -- local jiraTicket = string.find(summary, "BLP-")
+      -- if jiraTicket then
+      --   return " " .. string.sub(truncSummary, jiraTicket, jiraTicket + 6)
+      -- end
+
+      return "" .. " " .. truncSummary
     end
 
     statusline.section_diagnostics = function(args)

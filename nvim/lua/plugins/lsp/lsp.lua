@@ -6,33 +6,16 @@ return { -- lsp server setup
     "williamboman/mason-lspconfig.nvim",
   },
   opts = {
-    servers = {
-      ts_ls = { enabled = false },
+    ensure_installed = { "lua_ls", "ts_ls" },
+    automatic_enable = {
+      exclude = {
+        "ts_ls", -- disable ts_ls
+      },
     },
   },
   config = function(_, opts)
     require("mason").setup({})
 
-    require("mason-lspconfig").setup({
-      ensure_installed = vim.tbl_keys(opts.servers),
-      automatic_installation = true,
-    })
-
-    require("mason-lspconfig").setup_handlers({
-      function(server_name)
-        -- Check if the server is disabled
-        local server_opts = opts.servers[server_name]
-        if server_opts and server_opts.enabled == false then
-          return -- skip setup for this server
-        end
-
-        local capabilities = require("blink.cmp").get_lsp_capabilities()
-
-        require("lspconfig")[server_name].setup({
-          settings = server_opts,
-          capabilities = capabilities,
-        })
-      end,
-    })
+    require("mason-lspconfig").setup(opts)
   end,
 }

@@ -1,3 +1,25 @@
+local JEST = "neotest-jest"
+local VITEST = "neotest-vitest"
+
+local function fileExists(path)
+  local stat = vim.loop.fs_stat(path)
+  return stat and stat.type == "file"
+end
+
+local function getTestRunner()
+  if
+    fileExists(vim.fn.getcwd() .. "/jest.config.ts")
+    or fileExists(vim.fn.getcwd() .. "/jest.config.js")
+  then
+    return JEST
+  elseif fileExists(vim.fn.getcwd() .. "/vitest.config.ts") then
+    return VITEST
+  else
+    print("No test config found")
+    return nil
+  end
+end
+
 return { -- testings stuffs
   "nvim-neotest/neotest",
   event = "BufEnter",
@@ -11,18 +33,14 @@ return { -- testings stuffs
   },
   opts = {
     adapters = {
-      ["neotest-jest"] = {
-        jestCommand = "npm test --",
-        jestConfigFile = "jest.config.ts",
-        env = { CI = true },
-        cwd = function()
-          return vim.fn.getcwd()
-        end,
+      [JEST] = {
+        jestCommand = "yarn run jest --json",
       },
-      ["neotest-vitest"] = {
+      [VITEST] = {
         filter_dir = function(name)
           return name ~= "node_modules"
         end,
+        vitestCommand = "yarn run vitest",
       },
     },
     status = { virtual_text = true },
@@ -30,7 +48,6 @@ return { -- testings stuffs
     quickfix = { enabled = false },
   },
   config = function(_, opts)
-    local neotest_ns = vim.api.nvim_create_namespace("neotest")
     vim.diagnostic.config({
       virtual_text = {
         format = function(diagnostic)
@@ -43,32 +60,16 @@ return { -- testings stuffs
           return message
         end,
       },
-    }, neotest_ns)
+    }, vim.api.nvim_create_namespace("neotest"))
 
-    -- stole this from lazy vim, not sure what it does lol
-    if opts.adapters then
-      local adapters = {}
-      for name, config in pairs(opts.adapters or {}) do
-        if config ~= false then
-          local adapter = require(name)
-          if type(config) == "table" and not vim.tbl_isempty(config) then
-            local meta = getmetatable(adapter)
-            if adapter.setup then
-              adapter.setup(config)
-            elseif adapter.adapter then
-              adapter.adapter(config)
-              adapter = adapter.adapter
-            elseif meta and meta.__call then
-              adapter = adapter(config)
-            else
-              error("Adapter " .. name .. " does not support setup")
-            end
-          end
-          adapters[#adapters + 1] = adapter
-        end
-      end
-      opts.adapters = adapters
+    -- decide test runner to use by config file at root
+    local testRunner = getTestRunner()
+
+    local adapters = {}
+    if testRunner ~= nil and opts.adapters[testRunner] ~= nil then
+      adapters[#adapters + 1] = require(testRunner)(opts.adapters[testRunner])
     end
+    opts.adapters = adapters
 
     require("neotest").setup(opts)
   end,

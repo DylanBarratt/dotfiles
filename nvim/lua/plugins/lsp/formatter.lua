@@ -8,6 +8,7 @@ return { -- code formatting
       javascript = { "prettier" },
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
+      yaml = { "prettier" },
       html = { "superhtml" },
       sh = { "shfmt" },
       ocaml = { "ocamlformat" },
