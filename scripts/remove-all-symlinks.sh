@@ -10,6 +10,7 @@ unlink ~/.tmux.conf
 unlink ~/.zshrc
 unlink ~/.p10k.zsh
 unlink ~/dict.txt
+unlink ~/eslint/eslint.config.mjs
 
 if [ "$WSL_DISTRO_NAME" = "Ubuntu" ];
 then
