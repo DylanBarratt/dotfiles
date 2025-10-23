@@ -5,16 +5,15 @@ local config = wezterm.config_builder()
 local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
 if is_windows then
 	config.default_domain = "WSL:Ubuntu"
-	config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
-else
-	config.font = wezterm.font("IosevkaTerm Nerd Font", { weight = "Regular", italic = false })
 end
 config.default_cwd = wezterm.home_dir
 
+config.font = wezterm.font_with_fallback({
+	"IosevkaTerm Nerd Font",
+	"FiraCode Nerd Font Mono", --contains more nerdfont icons missing in iosevka
+})
 config.font_size = 14
 config.harfbuzz_features = { "calt=0", "clig=0", "liga=0" }
-
-config.hide_mouse_cursor_when_typing = true
 
 local keys = {
 	{
@@ -73,6 +72,7 @@ local process_icons = {
 	["vim"] = wezterm.nerdfonts.dev_vim,
 	["yarn"] = "",
 	["sam"] = "",
+	["docker"] = "",
 }
 -- Return the Tab's current working directory
 local function get_cwd(tab)
@@ -99,7 +99,7 @@ local function format_title(tab)
 
 	local icon = process_icons[active_title]
 
-	return (icon == nil) and string.format("%s", cwd) or string.format(" %s  %s ", icon, cwd)
+	return (icon == nil) and string.format(" %s ", cwd) or string.format(" %s  %s ", icon, cwd)
 end
 
 -- Returns manually set title (from `tab:set_title()` or `wezterm cli set-tab-title`) or creates a new one
