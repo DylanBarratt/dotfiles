@@ -1,7 +1,6 @@
 /**
  * This is a default eslint config used if no config is found.
  * needs npm packages "eslint" and "typescript-eslint" installed
- *  `npm install -G eslint typescript-eslint`
  */
 
 // @ts-check

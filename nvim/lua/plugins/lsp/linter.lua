@@ -1,7 +1,6 @@
 -- NOTE:
 --      eslint_d must be installed! Mason is nice :)
---      "eslint" and "typescript-eslint" must also be installed for the default config. 
---        `npm install -G eslint typescript-eslint`
+--      "eslint" and "typescript-eslint" must also be installed for the default config.
 --
 
 return { -- linting
@@ -23,7 +22,7 @@ return { -- linting
 
     if hasConfig() then
       lint.linters.eslint_d = {
-        name = "eslint_d",
+        name = "eslint",
         cmd = "eslint_d",
         stdin = true,
         args = {
@@ -41,8 +40,8 @@ return { -- linting
       }
     else
       lint.linters.eslint_d = {
-        name = "eslint_d",
-        cmd = "eslint_d",
+        name = "eslint",
+        cmd = "eslint", -- eslint works with better global config than eslint_d
         stdin = true,
         args = {
           "--format",
@@ -57,7 +56,7 @@ return { -- linting
         },
         stream = "stdout",
         ignore_exitcode = true,
-        parser = require("lint.linters.eslint_d").parser,
+        parser = require("lint.linters.eslint").parser,
       }
     end
 

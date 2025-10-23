@@ -45,7 +45,7 @@ lua
 ### eslint
 
 ```sh
-npm install -G eslint typescript-eslint
+npm install --global eslint typescript-eslint
 ```
 
 ## Zsh
