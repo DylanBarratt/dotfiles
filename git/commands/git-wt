@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 currentBranch=$(git symbolic-ref --short -q HEAD)
+
 if [[ "$currentBranch" != "master" ]]; then
-  cd ../master
+  echo "please be on master!"
   exit 1
 fi
 
