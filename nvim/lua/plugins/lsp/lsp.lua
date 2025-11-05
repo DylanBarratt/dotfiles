@@ -6,7 +6,7 @@ return { -- lsp server setup
     "williamboman/mason-lspconfig.nvim",
   },
   opts = {
-    ensure_installed = { "lua_ls", "ts_ls" },
+    ensure_installed = { "lua_ls" },
     automatic_enable = {
       exclude = {
         "ts_ls", -- disable ts_ls
