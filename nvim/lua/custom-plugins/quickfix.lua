@@ -1,5 +1,5 @@
 -- Quickfix save/load functionality for Neovim
--- vibe coded
+-- vibe coded :D
 
 local M = {}
 
@@ -10,7 +10,7 @@ local qf_dir = vim.fn.stdpath("data") .. "/quickfix"
 vim.fn.mkdir(qf_dir, "p")
 
 -- Save current quickfix list to a file
-function M.save_quickfix(filename)
+function M.save_quickfix(saveFileName)
   local qf_list = vim.fn.getqflist()
 
   if #qf_list == 0 then
@@ -19,16 +19,16 @@ function M.save_quickfix(filename)
   end
 
   -- Default filename if not provided
-  if not filename then
-    filename = "quickfix_" .. os.date("%Y%m%d_%H%M%S") .. ".json"
+  if not saveFileName then
+    saveFileName = "quickfix_" .. os.date("%Y%m%d_%H%M%S") .. ".json"
   end
 
   -- Add .json extension if not present
-  if not filename:match("%.json$") then
-    filename = filename .. ".json"
+  if not saveFileName:match("%.json$") then
+    saveFileName = saveFileName .. ".json"
   end
 
-  local filepath = qf_dir .. "/" .. filename
+  local filepath = qf_dir .. "/" .. saveFileName
 
   -- Convert quickfix list to JSON-serializable format
   local qf_data = {
@@ -37,7 +37,7 @@ function M.save_quickfix(filename)
     items = {},
   }
 
-  for i, item in ipairs(qf_list) do
+  for _, item in ipairs(qf_list) do
     -- Get filename from buffer number if filename is empty
     local filename = item.filename or ""
     if filename == "" and item.bufnr and item.bufnr > 0 then
@@ -64,7 +64,7 @@ function M.save_quickfix(filename)
   if file then
     file:write(vim.json.encode(qf_data))
     file:close()
-    vim.notify("Quickfix list saved to: " .. filename, vim.log.levels.INFO)
+    vim.notify("Quickfix list saved to: " .. saveFileName, vim.log.levels.INFO)
   else
     vim.notify("Error: Could not save quickfix list", vim.log.levels.ERROR)
   end

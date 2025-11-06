@@ -11,6 +11,7 @@
 
 [user]
 	name = Dylan Barratt
+	email = dylan.barratt@wjec.co.uk
 
 [pull]
 	rebase = false

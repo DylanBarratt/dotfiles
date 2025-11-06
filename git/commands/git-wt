@@ -41,3 +41,5 @@ if [ -d .yarn ] || [ -d node_modules ]; then
   echo "installing yarn packages"
   cd "../${cleanFolderName}" && yarn install || exit
 fi
+
+# vim: ft=bash

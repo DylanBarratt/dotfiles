@@ -14,12 +14,14 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
--- Import all in ./plugins
+-- Import all in lazy plugin specs
 require("lazy").setup({
-  { import = "plugins.lsp" },
-  { import = "plugins.lsp.lang" },
-  { import = "plugins.navigation" },
-  { import = "plugins.ui" },
-  { import = "plugins.util" },
-  { import = "plugins.util.git" },
+  { import = "lazy-plugins" },
+  { import = "lazy-plugins.navigation" },
+  { import = "lazy-plugins.ui" },
+  { import = "lazy-plugins.util" },
+  { import = "lazy-plugins.git" },
 })
+
+-- Custom quickfix plugins
+require("custom-plugins")

@@ -14,13 +14,13 @@ require("options")
 require("keymaps")
 
 -- [[ Configure and install plugins ]]
-require("lazy-init")
+require("plugins-init")
 
 -- [[ Load Auto-Commands ]]
 require("auto-commands")
 
--- [[ Quickfix improvements ]]
-require("quickfix")
+-- [[ LSP settings ]]
+require("lsp")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
