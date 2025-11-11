@@ -25,13 +25,13 @@ COMPLETION_WAITING_DOTS="true"
 # stamp shown in the history command output.
 HIST_STAMPS="dd/mm/yyyy"
 
-plugins=(
-  git
-  zsh-syntax-highlighting 
-  zsh-vi-mode
-  yarn
-  aws
-)
+# plugins=(
+#   git
+#   zsh-syntax-highlighting 
+#   zsh-vi-mode
+#   yarn
+#   aws
+# )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -41,15 +41,15 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
 # Still point to the symlink version
-export PATH=$PATH:$HOME/.config/git/commands
-export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:/usr/local/gremlin/bin"
+# export PATH=$PATH:$HOME/.config/git/commands
+# export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+# export PATH="$PATH:/usr/local/go/bin"
+# export PATH="$PATH:/usr/local/gremlin/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
