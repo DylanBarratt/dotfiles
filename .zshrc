@@ -50,5 +50,6 @@ export GPG_TTY=$(tty)
 export PATH=$PATH:$HOME/.config/git/commands
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:/usr/local/gremlin/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
