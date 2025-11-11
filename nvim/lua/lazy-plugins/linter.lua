@@ -10,7 +10,7 @@ return { -- linting
 
     local function hasConfig()
       local cwd = vim.fn.getcwd()
-      local configs = { "eslint.config.js", "eslint.config.ts" }
+      local configs = { "package.json", "eslint.config.js", "eslint.config.ts" }
 
       for _, filename in ipairs(configs) do
         if vim.fn.filereadable(cwd .. "/" .. filename) == 1 then

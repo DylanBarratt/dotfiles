@@ -5,11 +5,10 @@ vim.lsp.config("*", {
 })
 
 vim.lsp.enable({
+  "typescript-language-server",
   "lua-language-server",
   "bash-language-server",
   "css-lsp",
-  "json-lsp",
-  "lua-language-server",
   "marksman",
   "pyright",
   "stylua",

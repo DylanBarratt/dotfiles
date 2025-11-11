@@ -23,6 +23,7 @@ return { -- better lsp diagnostics
 
         local icons = {
           { name = "eslint", char = "" },
+          { name = "eslint_d", char = "" },
           { name = "tsserver", char = "" },
         }
 
