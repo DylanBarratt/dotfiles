@@ -31,7 +31,7 @@ installMsg() {
     tar -C /opt -xzf nvim-linux-x86_64.tar.gz
 
     # c compiler (for treesitter)
-    apt install gcc
+    apt install -y gcc
   )
 
   # Lua:
