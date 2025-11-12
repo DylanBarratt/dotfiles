@@ -40,8 +40,8 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# start ssh
-eval $(ssh-agent)
+# start ssh (silently)
+eval $(ssh-agent) >/dev/null
 
 # PATH
 # add nvim to path
