@@ -15,7 +15,7 @@ installMsg() {
   apt update
 
   # basics
-  apt install build-essential libreadline-dev unzip
+  apt install -y build-essential libreadline-dev zip unzip wget curl
 
   # fd find
   installMsg "fd"
