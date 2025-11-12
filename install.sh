@@ -21,7 +21,7 @@ installMsg() {
   # zsh
   installMsg "zsh"
   apt install -y zsh
-  chsh -s $(which zsh) # change default shell to zsh
+  chsh -s "$(which zsh)" # change default shell to zsh
 
   # nvim
   installMsg "nvim"
@@ -29,6 +29,9 @@ installMsg() {
     curl -LO https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
     rm -rf /opt/nvim-linux-x86_64
     tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+
+    # c compiler (for treesitter)
+    apt install gcc
   )
 
   # Lua:
