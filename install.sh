@@ -9,7 +9,7 @@ installMsg() {
 # INSTALL STUFF!
 (
   installMsg "STUFF"
-  # move to tmp so any setup files installed are not in the way
+  # move to tmp so any setup files installed can be discarded
   cd /tmp
 
   apt update
@@ -22,6 +22,14 @@ installMsg() {
   installMsg "zsh"
   apt install -y zsh
   chsh -s $(which zsh) # change default shell to zsh
+
+  # nvim
+  installMsg "nvim"
+  (
+    curl -LO https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
+    rm -rf /opt/nvim-linux-x86_64
+    tar -C /opt -xzf nvim-linux-x86_64.tar.gz
+  )
 
   # Lua:
   installMsg "lua"
@@ -50,6 +58,14 @@ installMsg() {
   installMsg "fzf"
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install
+
+  # oh my zsh
+  installMsg "oh my zsh"
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+  # p10k
+  installMsg "p10k"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "~/.oh-my-zsh/custom/themes/powerlevel10k"
 )
 
 # TODO:
@@ -57,8 +73,11 @@ installMsg() {
 #       zsh plugins
 
 mkdir ~/.config
+rm -rf ~/.config/nvim
 cp -r ./nvim ~/.config
 
+rm -rf ~/.zshrc
 cp ./.zshrc ~/.zshrc
 
+rm -rf ~/.p10k.zsh
 cp ./.p10k.zsh ~/.p10k.zsh
