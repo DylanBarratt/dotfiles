@@ -63,14 +63,15 @@ installMsg() {
   installMsg "oh my zsh"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
+  # oh my zsh plugins
+  installMsg "ohmyzsh plugins"
   # p10k
-  installMsg "p10k"
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "~/.oh-my-zsh/custom/themes/powerlevel10k"
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
+  # zsh-syntax-highlighting
+  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+  # zsh-vi-mode
+  git clone https://github.com/jeffreytse/zsh-vi-mode ~/.oh-my-zsh/plugins/zsh-vi-mode
 )
-
-# TODO:
-#      install:
-#       zsh plugins
 
 mkdir ~/.config
 rm -rf ~/.config/nvim

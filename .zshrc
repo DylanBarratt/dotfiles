@@ -25,13 +25,12 @@ COMPLETION_WAITING_DOTS="true"
 # stamp shown in the history command output.
 HIST_STAMPS="dd/mm/yyyy"
 
-# plugins=(
-#   git
-#   zsh-syntax-highlighting 
-#   zsh-vi-mode
-#   yarn
-#   aws
-# )
+plugins=(
+  zsh-syntax-highlighting
+  zsh-vi-mode
+  aws
+  gradle
+)
 
 source $ZSH/oh-my-zsh.sh
 
