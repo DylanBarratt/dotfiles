@@ -14,6 +14,9 @@ installMsg() {
 
   apt update
 
+  # basics
+  apt install build-essential libreadline-dev unzip
+
   # fd find
   installMsg "fd"
   apt install -y fd-find
@@ -29,9 +32,6 @@ installMsg() {
     curl -LO https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
     rm -rf /opt/nvim-linux-x86_64
     tar -C /opt -xzf nvim-linux-x86_64.tar.gz
-
-    # c compiler (for treesitter)
-    apt install -y gcc
   )
 
   # Lua:
