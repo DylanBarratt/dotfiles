@@ -59,7 +59,7 @@ installMsg() {
   # fzf
   installMsg "fzf"
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  ~/.fzf/install --no-key-bindings --completion --no-update-rc --no-zsh
+  ~/.fzf/install --no-key-bindings --completion --update-rc
 
   # oh my zsh
   installMsg "oh my zsh"
