@@ -34,7 +34,7 @@ return { -- testings stuffs
   opts = {
     adapters = {
       [JEST] = {
-        jestCommand = "yarn run jest --json",
+        jestCommand = "npm run jest --json",
       },
       [VITEST] = {
         filter_dir = function(name)
