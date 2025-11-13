@@ -12,7 +12,7 @@ installMsg() {
   # move to tmp so any setup files installed can be discarded
   cd /tmp
 
-  apt update
+  apt update -y
 
   # basics
   apt install -y build-essential libreadline-dev zip unzip wget curl
