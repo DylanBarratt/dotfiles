@@ -54,7 +54,6 @@ installMsg() {
     cd luarocks-3.11.1
     ./configure && make && sudo make install
     luarocks install luasocket
-    lua
   )
 
   # fzf
