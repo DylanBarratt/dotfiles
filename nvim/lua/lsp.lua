@@ -4,14 +4,18 @@ vim.lsp.config("*", {
   root_markers = { ".git" },
 })
 
-vim.lsp.enable({
-  "typescript-language-server",
-  "lua-language-server",
-  "bash-language-server",
-  "css-lsp",
+local servers = {
+  "ts_ls",
+  "lua_ls",
+  "bashls",
+  "cssls",
   "marksman",
   "pyright",
   "stylua",
   "superhtml",
-  "yaml-language-server",
-})
+  "yamlls",
+}
+
+vim.lsp.enable(servers)
+
+return servers
