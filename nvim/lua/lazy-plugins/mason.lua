@@ -10,6 +10,8 @@ return { -- easy lsp installation
 
     require("mason-lspconfig").setup({
       ensure_installed = servers,
+      -- server enabling is controlled in lua/lsp.lua
+      automatic_enable = false
     })
   end,
 }
