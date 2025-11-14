@@ -29,7 +29,7 @@ installMsg() {
   # nvim
   installMsg "nvim"
   (
-    curl -LO https://github.com/neovim/neovim/releases/download/v0.11.3/nvim-linux-x86_64.tar.gz
+    curl -LO https://github.com/neovim/neovim/releases/download/v0.11.5/nvim-linux-x86_64.tar.gz
     rm -rf /opt/nvim-linux-x86_64
     tar -C /opt -xzf nvim-linux-x86_64.tar.gz
   )
