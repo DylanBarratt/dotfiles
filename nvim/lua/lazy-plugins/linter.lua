@@ -1,6 +1,5 @@
 -- NOTE:
 --      eslint_d must be installed! Mason is nice :)
---      "eslint" and "typescript-eslint" must also be installed for the default config.
 --
 
 return { -- linting
@@ -8,57 +7,23 @@ return { -- linting
   config = function()
     local lint = require("lint")
 
-    local function hasConfig()
-      local cwd = vim.fn.getcwd()
-      local configs = { "package.json", "eslint.config.js", "eslint.config.ts" }
-
-      for _, filename in ipairs(configs) do
-        if vim.fn.filereadable(cwd .. "/" .. filename) == 1 then
-          return true
-        end
-      end
-      return false
-    end
-
-    if hasConfig() then
-      lint.linters.eslint_d = {
-        name = "eslint",
-        cmd = "eslint_d",
-        stdin = true,
-        args = {
-          "--format",
-          "json",
-          "--stdin",
-          "--stdin-filename",
-          function()
-            return vim.api.nvim_buf_get_name(0)
-          end,
-        },
-        stream = "stdout",
-        ignore_exitcode = true,
-        parser = require("lint.linters.eslint_d").parser,
-      }
-    else
-      lint.linters.eslint_d = {
-        name = "eslint",
-        cmd = "eslint", -- eslint works with better global config than eslint_d
-        stdin = true,
-        args = {
-          "--format",
-          "json",
-          "--stdin",
-          "--stdin-filename",
-          function()
-            return vim.api.nvim_buf_get_name(0)
-          end,
-          "--config",
-          "/home/dylan/eslint.config.mjs",
-        },
-        stream = "stdout",
-        ignore_exitcode = true,
-        parser = require("lint.linters.eslint").parser,
-      }
-    end
+    lint.linters.eslint_d = {
+      name = "eslint",
+      cmd = "eslint_d",
+      stdin = true,
+      args = {
+        "--format",
+        "json",
+        "--stdin",
+        "--stdin-filename",
+        function()
+          return vim.api.nvim_buf_get_name(0)
+        end,
+      },
+      stream = "stdout",
+      ignore_exitcode = true,
+      parser = require("lint.linters.eslint_d").parser,
+    }
 
     lint.linters_by_ft = {
       javascript = { "eslint_d" },

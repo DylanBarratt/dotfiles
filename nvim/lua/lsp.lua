@@ -16,6 +16,18 @@ local servers = {
   "yamlls",
 }
 
-vim.lsp.enable(servers)
+local enabled_servers = {
+  -- "ts_ls",
+  "lua_ls",
+  "bashls",
+  "cssls",
+  "marksman",
+  "pyright",
+  "stylua",
+  "superhtml",
+  "yamlls",
+}
+
+vim.lsp.enable(enabled_servers)
 
 return servers
