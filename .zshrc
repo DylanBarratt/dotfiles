@@ -53,3 +53,5 @@ export NVM_DIR="$HOME/.nvm"
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+alias dc="devcontainer exec --workspace-folder ."

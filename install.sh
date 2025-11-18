@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# installs neovim and needed extras for my setup
+
 installMsg() {
   echo "--------------------------------"
   echo "INSTALLING $1"
@@ -20,11 +22,6 @@ installMsg() {
   # fd find
   installMsg "fd"
   apt install -y fd-find
-
-  # zsh
-  installMsg "zsh"
-  apt install -y zsh
-  chsh -s "$(which zsh)" # change default shell to zsh
 
   # nvim
   installMsg "nvim"
@@ -61,26 +58,8 @@ installMsg() {
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install --no-key-bindings --completion --update-rc
 
-  # oh my zsh
-  installMsg "oh my zsh"
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
-
-  # oh my zsh plugins
-  installMsg "ohmyzsh plugins"
-  # p10k
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
-  # zsh-syntax-highlighting
-  git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
-  # zsh-vi-mode
-  git clone https://github.com/jeffreytse/zsh-vi-mode ~/.oh-my-zsh/plugins/zsh-vi-mode
 )
 
 mkdir ~/.config
 rm -rf ~/.config/nvim
 cp -r ./nvim ~/.config
-
-rm -rf ~/.zshrc
-cp ./.zshrc ~/.zshrc
-
-rm -rf ~/.p10k.zsh
-cp ./.p10k.zsh ~/.p10k.zsh
