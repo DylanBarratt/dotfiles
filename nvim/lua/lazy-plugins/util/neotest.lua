@@ -1,25 +1,3 @@
-local JEST = "neotest-jest"
-local VITEST = "neotest-vitest"
-
-local function fileExists(path)
-  local stat = vim.loop.fs_stat(path)
-  return stat and stat.type == "file"
-end
-
-local function getTestRunner()
-  if
-    fileExists(vim.fn.getcwd() .. "/jest.config.ts")
-    or fileExists(vim.fn.getcwd() .. "/jest.config.js")
-  then
-    return JEST
-  elseif fileExists(vim.fn.getcwd() .. "/vitest.config.ts") then
-    return VITEST
-  else
-    print("No test config found")
-    return nil
-  end
-end
-
 return { -- testings stuffs
   "nvim-neotest/neotest",
   event = "BufEnter",
@@ -33,14 +11,11 @@ return { -- testings stuffs
   },
   opts = {
     adapters = {
-      [JEST] = {
-        jestCommand = "npm run jest --json",
-      },
-      [VITEST] = {
-        filter_dir = function(name)
-          return name ~= "node_modules"
-        end,
-        vitestCommand = "yarn run vitest",
+      {
+        name = "neotest-jest",
+        opts = {
+          jestCommand = "npx jest --json --forceExit --testLocationInResults",
+        },
       },
     },
     status = { virtual_text = true },
@@ -62,13 +37,11 @@ return { -- testings stuffs
       },
     }, vim.api.nvim_create_namespace("neotest"))
 
-    -- decide test runner to use by config file at root
-    local testRunner = getTestRunner()
-
     local adapters = {}
-    if testRunner ~= nil and opts.adapters[testRunner] ~= nil then
-      adapters[#adapters + 1] = require(testRunner)(opts.adapters[testRunner])
+    for key, adapter in pairs(opts.adapters) do
+      adapters[key] = require(adapter.name)(adapter.opts)
     end
+
     opts.adapters = adapters
 
     require("neotest").setup(opts)
