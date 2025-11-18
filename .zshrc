@@ -29,7 +29,6 @@ plugins=(
   zsh-syntax-highlighting
   zsh-vi-mode
   aws
-  gradle
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -45,6 +44,8 @@ eval $(ssh-agent) >/dev/null
 # PATH
 # nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+
+export PATH="$PATH:/opt/gradle/gradle-9.2.1/bin"
 
 # nvm (if installed)
 export NVM_DIR="$HOME/.nvm"
