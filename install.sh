@@ -63,3 +63,6 @@ installMsg() {
 mkdir ~/.config
 rm -rf ~/.config/nvim
 cp -r ./nvim ~/.config
+
+rm ~/.bashrc
+cp ./.bashrc ~/.bashrc
