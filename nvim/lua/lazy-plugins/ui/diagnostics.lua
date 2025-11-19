@@ -19,7 +19,9 @@ return { -- better lsp diagnostics
       -- Custom function to format diagnostic messages
       -- Receives diagnostic object, returns formatted string
       format = function(diag)
-        local source
+        if diag.source == nil then
+          return diag.message
+        end
 
         local icons = {
           { name = "eslint", char = "" },
@@ -27,6 +29,7 @@ return { -- better lsp diagnostics
           { name = "tsserver", char = "" },
         }
 
+        local source
         for _, icon in ipairs(icons) do
           if diag.source == icon.name then
             source = icon.char
