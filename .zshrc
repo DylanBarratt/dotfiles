@@ -29,6 +29,7 @@ plugins=(
   zsh-syntax-highlighting
   zsh-vi-mode
   aws
+  gradle
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -55,11 +56,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/gremlin/bin" ] && export PATH="$PATH:/usr/local/gremlin/bin"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# wrapper for devcontainer
-dc() {
-  devcontainer exec --workspace-folder . "$@"
-}
-
-# tell zsh: complete `dc <cmd>` like `<cmd>` itself
-compdef dc=command
