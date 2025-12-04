@@ -63,3 +63,14 @@ vim.opt.ttyfast = true
 
 -- Enable true color support
 vim.opt.termguicolors = true
+
+-- column at 80 chars
+vim.opt.colorcolumn = "80"
+
+-- Disable colorcolumn for specific filetypes
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "oil", "help", "qf", "lazy", "mason", "fugitive" },
+  callback = function()
+    vim.opt_local.colorcolumn = ""
+  end,
+})
