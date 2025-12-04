@@ -14,6 +14,7 @@ local servers = {
   "stylua",
   "superhtml",
   "yamlls",
+  "groovyls",
 }
 
 vim.lsp.enable(servers)
