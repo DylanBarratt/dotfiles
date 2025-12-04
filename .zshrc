@@ -55,4 +55,10 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-alias dc="devcontainer exec --workspace-folder ."
+# wrapper for devcontainer
+dc() {
+  devcontainer exec --workspace-folder . "$@"
+}
+
+# tell zsh: complete `dc <cmd>` like `<cmd>` itself
+compdef dc=command
