@@ -86,3 +86,6 @@ cp ./.zshrc ~/.zshrc
 
 rm -rf ~/.p10k.zsh
 cp ./.p10k.zsh ~/.p10k.zsh
+
+rm -rf ~/.git
+cp -r ./git ~/.git

@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+currentBranch=$(git symbolic-ref --short -q HEAD)
+if [ "$currentBranch" != "master" ]
+then
+  echo "please be on master yo"
+  exit 1
+fi
+
+branchName=$(git for-each-ref --format='%(refname:short)' refs/heads/ | grep -v -E '^(master)' | gum choose --limit 1)
+
+cleanFolderName=$(echo "$branchName" | sed -e 's/\//-/g')
+parentdir=$(dirname "$(pwd)")
+git worktree remove "${parentdir}/${cleanFolderName}"
+git branch -D "$branchName"
