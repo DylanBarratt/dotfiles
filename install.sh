@@ -96,3 +96,12 @@ cp ./.p10k.zsh ~/.p10k.zsh
 rm -rf ~/.config/.gitCommands
 cp -r ./gitCommands ~/.config/gitCommands
 chmod -R +x ~/.config/gitCommands
+
+# copy devcontainer workspace(s) to home in worktree format i like :)
+if [ -d "/workspaces" ]; then
+  for folder in $(echo /workspaces/*); do
+    echo "duplicating $folder"
+    mkdir "$HOME/$folder"
+    cp -r "/workspaces/$folder" "$HOME/$folder/master"
+  done
+fi
