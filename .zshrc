@@ -55,6 +55,6 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -s "/usr/local/gremlin/bin" ] && export PATH="$PATH:/usr/local/gremlin/bin"
 
-[ -s "$HOME/.git/commands" ] && export PATH="$PATH:$HOME/.git/commands"
+[ -s "$HOME/.config/gitCommands" ] && export PATH="$PATH:$HOME/.config/gitCommands"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
