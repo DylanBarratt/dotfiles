@@ -29,14 +29,12 @@ if [[ "$workTreeAddSuccess" == "branch doesn't exist on remote" ]]; then
   exit 1
 fi
 
-if [ ! -f .env ]; then
-  echo "env doesn't exist"
-else
+if [ -f .env ]; then
   echo "copying env file..."
   cp .env "../${cleanFolderName}"
 fi
 
-if [ -d .yarn ] || [ -d node_modules ]; then
-  echo "installing yarn packages"
-  cd "../${cleanFolderName}" && yarn install || exit
+if [ -d "../${cleanFolderName}/node_modules" ]; then
+  echo "installing npm packages"
+  cd "../${cleanFolderName}" && npm install || exit
 fi
