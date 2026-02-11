@@ -28,6 +28,19 @@ installMsg() {
   apt install -y zsh
   chsh -s "$(which zsh)" # change default shell to zsh
 
+  # delta
+  installMsg "delta"
+  (
+    curl -LO https://github.com/dandavison/delta/releases/download/0.18.0/git-delta_0.18.0_amd64.deb
+    dpkg --install ./git-delta_0.18.0_amd64.deb
+    git config --global core.pager delta
+    git config --global interactive.diffFilter 'delta --color-only'
+    git config --global delta.navigate true
+    git config --global delta.light true
+    git config --global delta.line-numbers true
+    git config --global merge.conflictStyle zdiff3
+  )
+
   # nvim
   installMsg "nvim"
   (
