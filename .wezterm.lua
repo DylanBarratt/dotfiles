@@ -68,15 +68,15 @@ config.colors = {
 
 local process_icons = {
 	["git"] = wezterm.nerdfonts.dev_git,
-	["nvim"] = "",
+	["nvim"] = "  ",
 	["vim"] = wezterm.nerdfonts.dev_vim,
-	["npm"] = "",
-	["yarn"] = "",
-	["sam"] = "",
-	["docker"] = "",
-	["gremlin"] = "󱁊",
-	["dc"] = "󰵮",
-	["devcontainer"] = "󰵮",
+	["npm"] = "  ",
+	["yarn"] = "  ",
+	["sam"] = "  ",
+	["docker"] = "  ",
+	["gremlin"] = " 󱁊 ",
+	["dc"] = " 󰵮 ",
+	["devcontainer"] = " 󰵮 ",
 }
 -- Return the Tab's current working directory
 local function get_cwd(tab)
