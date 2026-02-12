@@ -21,6 +21,7 @@ require("lazy").setup({
   { import = "lazy-plugins.ui" },
   { import = "lazy-plugins.util" },
   { import = "lazy-plugins.git" },
+  { import = "lazy-plugins.lsp" },
 })
 
 -- Custom quickfix plugins

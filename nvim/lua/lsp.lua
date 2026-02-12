@@ -15,6 +15,7 @@ local servers = {
   "superhtml",
   "yamlls",
   "groovyls",
+  "jsonls",
 }
 
 vim.lsp.enable(servers)
