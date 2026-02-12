@@ -5,7 +5,7 @@ return { -- code formatting
   opts = {
     formatters_by_ft = { -- installed with mason
       lua = { "stylua" },
-      javascript = { "eslint_d" },
+      javascript = { "prettier" },
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
       yaml = { "prettier" },
