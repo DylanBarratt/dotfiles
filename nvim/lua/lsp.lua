@@ -4,7 +4,7 @@ vim.lsp.config("*", {
   root_markers = { ".git" },
 })
 
-local servers = {
+local ensure_installed = {
   "ts_ls",
   "lua_ls",
   "bashls",
@@ -16,6 +16,11 @@ local servers = {
   "jsonls",
 }
 
+local servers = {
+  "cfn_ls",
+  unpack(ensure_installed),
+}
+
 vim.lsp.enable(servers)
 
-return servers
+return { servers, ensure_installed }

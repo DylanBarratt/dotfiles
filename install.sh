@@ -49,6 +49,12 @@ installMsg() {
     tar -C /opt -xzf nvim-linux-x86_64.tar.gz
   )
 
+  installMsg "nvim:extras"
+  (
+    curl -LO https://github.com/aws-cloudformation/cloudformation-languageserver/releases/download/v1.4.0/cloudformation-languageserver-1.4.0-linux-x64-node22.zip
+    unzip cloudformation-languageserver-1.4.0-linux-x64-node22.zip -d /usr/local/bin/cfn_ls
+  )
+
   # Lua:
   installMsg "lua"
   (

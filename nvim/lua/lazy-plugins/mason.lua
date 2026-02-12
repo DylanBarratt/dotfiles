@@ -6,7 +6,7 @@ return { -- easy lsp installation
   config = function()
     require("mason").setup()
 
-    local servers = require("lsp")
+    local servers = require("lsp").ensure_installed
 
     require("mason-lspconfig").setup({
       ensure_installed = servers,
