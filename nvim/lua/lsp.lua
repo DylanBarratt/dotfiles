@@ -14,7 +14,6 @@ local servers = {
   "stylua",
   "superhtml",
   "yamlls",
-  "groovyls",
   "jsonls",
 }
 
