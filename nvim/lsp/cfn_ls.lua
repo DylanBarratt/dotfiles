@@ -4,7 +4,7 @@ return {
     "/usr/local/bin/cfn_ls/cfn-lsp-server-standalone.js",
     "--stdio",
   },
-  filetypes = { "yaml", "json" },
+  filetypes = { "yaml" },
   root_markers = { "package.json", ".git" },
   init_options = {
     aws = {
