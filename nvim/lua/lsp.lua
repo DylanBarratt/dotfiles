@@ -13,7 +13,6 @@ local servers = {
   "pyright",
   "stylua",
   "superhtml",
-  "yamlls",
   "jsonls",
 }
 
