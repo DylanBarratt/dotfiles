@@ -31,7 +31,7 @@ return { -- faster search?
     fzf.setup(opts)
 
     vim.keymap.set("n", "<leader><leader>", function()
-      fzf.files({ cmd = "fdfind --type file --hidden --exclude '.yarn' --exclude '.git' --exclude '.aws-sam' --ignore" })
+      fzf.files({ cmd = "fd --type file --hidden" })
     end, { desc = "find files" })
 
     vim.keymap.set(
