@@ -31,7 +31,9 @@ return { -- faster search?
     fzf.setup(opts)
 
     vim.keymap.set("n", "<leader><leader>", function()
-      fzf.files({ cmd = "fdfind --type file --hidden --exclude '.yarn' --exclude '.git' --exclude '.aws-sam' --ignore" })
+      fzf.files({
+        cmd = "fdfind --type file --hidden --exclude '.yarn' --exclude '.git' --exclude '.aws-sam' --ignore",
+      })
     end, { desc = "find files" })
 
     vim.keymap.set(
@@ -41,12 +43,11 @@ return { -- faster search?
       { desc = "[s]earch [r]esume" }
     )
 
-    vim.keymap.set(
-      "n",
-      "<leader>sg",
-      "<CMD>FzfLua live_grep<CR>",
-      { desc = "[s]earch [g]rep" }
-    )
+    vim.keymap.set("n", "<leader>sg", function()
+      fzf.live_grep({
+        cmd = "rg --hidden -n --column --color=always --smart-case --glob '!node_modules/**' --glob '!.git/**' --glob '!package-lock.json'",
+      })
+    end, { desc = "[s]earch [g]rep" })
 
     vim.keymap.set(
       "n",
