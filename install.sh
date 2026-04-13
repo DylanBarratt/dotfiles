@@ -1,6 +1,9 @@
 #!/bin/bash
 
 # installs zsh, neovim, and needed extras for my setup
+# BINARIES: /usr/local/bin
+# COMPLETION: /etc/bash_completion.d
+# PROGRAMS: /opt
 
 installMsg() {
   echo "--------------------------------"
@@ -39,6 +42,15 @@ installMsg() {
     git config --global delta.light true
     git config --global delta.line-numbers true
     git config --global merge.conflictStyle zdiff3
+  )
+
+  # rq
+  installMsg "ripgrep"
+  (
+    curl -LO https://github.com/BurntSushi/ripgrep/releases/download/15.1.0/ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz
+    tar -xzf ripgrep-15.1.0-x86_64-unknown-linux-musl.tar.gz
+    cp ripgrep-15.1.0-x86_64-unknown-linux-musl/rg /usr/local/bin
+    cp ripgrep-15.1.0-x86_64-unknown-linux-musl/complete/rg.bash /etc/bash_completion.d
   )
 
   # nvim
