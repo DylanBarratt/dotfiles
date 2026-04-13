@@ -53,6 +53,8 @@ installMsg() {
   (
     curl -LO https://github.com/aws-cloudformation/cloudformation-languageserver/releases/download/v1.4.0/cloudformation-languageserver-1.4.0-linux-x64-node22.zip
     unzip cloudformation-languageserver-1.4.0-linux-x64-node22.zip -d /usr/local/bin/cfn_ls
+    # WARNING: assumes npm is installed!
+    npm install --global tree-sitter-cli
   )
 
   # Lua:
