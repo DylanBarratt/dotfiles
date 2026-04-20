@@ -14,7 +14,7 @@ return { -- testings stuffs
       {
         name = "neotest-jest",
         opts = {
-          jestCommand = "npx jest --json --forceExit --testLocationInResults",
+          jestCommand = "node --experimental-vm-modules node_modules/.bin/jest --json --forceExit --testLocationInResults",
         },
       },
     },
