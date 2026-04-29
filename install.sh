@@ -116,19 +116,7 @@ installMsg() {
   git clone https://github.com/jeffreytse/zsh-vi-mode ~/.oh-my-zsh/plugins/zsh-vi-mode
 )
 
-mkdir ~/.config
-rm -rf ~/.config/nvim
-cp -r ./nvim ~/.config
-
-rm -rf ~/.zshrc
-cp ./.zshrc ~/.zshrc
-
-rm -rf ~/.p10k.zsh
-cp ./.p10k.zsh ~/.p10k.zsh
-
-rm -rf ~/.config/.gitCommands
-cp -r ./gitCommands ~/.config/gitCommands
-chmod -R +x ~/.config/gitCommands
+./scripts/link-configs.sh
 
 # copy devcontainer workspace(s) to home in worktree format i like :)
 if [ -d "/workspaces" ]; then
