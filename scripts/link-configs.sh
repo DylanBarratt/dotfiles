@@ -20,6 +20,8 @@ ln -s "$DOTFILES_DIR/gitCommands" ~/.config/gitCommands
 rm -f ~/.wezterm.lua
 ln -s "$DOTFILES_DIR/.wezterm.lua" ~/.wezterm.lua
 
+mkdir -p ~/.kiro
+
 rm -f ~/.kiro/skills
 ln -s "$DOTFILES_DIR/kiro/skills" ~/.kiro/skills
 
