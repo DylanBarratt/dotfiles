@@ -43,6 +43,9 @@ source $ZSH/oh-my-zsh.sh
 eval $(ssh-agent) >/dev/null
 
 # PATH
+# local binaries
+export PATH="$PATH:$HOME/.local/bin"
+
 # nvim
 export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 

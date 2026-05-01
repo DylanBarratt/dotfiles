@@ -114,6 +114,10 @@ installMsg() {
   git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
   # zsh-vi-mode
   git clone https://github.com/jeffreytse/zsh-vi-mode ~/.oh-my-zsh/plugins/zsh-vi-mode
+
+  # kiro
+  installMsg "kiro"
+  curl -fsSL https://cli.kiro.dev/install | bash
 )
 
 ./scripts/link-configs.sh
