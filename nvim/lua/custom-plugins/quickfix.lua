@@ -207,6 +207,20 @@ end, {
   end,
 })
 
+-- Populate quickfix with workspace TypeScript errors via tsc
+vim.api.nvim_create_user_command("QfDiag", function()
+  local tsc = vim.fn.findfile("node_modules/.bin/tsc", ".;")
+  if tsc == "" then
+    tsc = "tsc"
+  end
+  vim.cmd("cexpr []")
+  vim.cmd(
+    "compiler tsc | set makeprg="
+      .. vim.fn.fnameescape(tsc)
+      .. "\\ --noEmit\\ --pretty\\ false | make!"
+  )
+end, { desc = "Run tsc --noEmit and send errors to quickfix" })
+
 -- Keymaps
 vim.keymap.set("n", "<leader>qs", function()
   vim.ui.input({ prompt = "Save quickfix as: " }, function(input)
